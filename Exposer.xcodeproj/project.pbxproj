@@ -16,6 +16,7 @@
 		014D788216A1BB7100672323 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788116A1BB7100672323 /* Default.png */; };
 		014D788416A1BB7100672323 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788316A1BB7100672323 /* Default@2x.png */; };
 		014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788516A1BB7100672323 /* Default-568h@2x.png */; };
+		014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D788D16A1BB9000672323 /* ExposerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		014D788116A1BB7100672323 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		014D788316A1BB7100672323 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		014D788516A1BB7100672323 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		014D788C16A1BB9000672323 /* ExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExposerViewController.h; sourceTree = "<group>"; };
+		014D788D16A1BB9000672323 /* ExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExposerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 		014D787516A1BB7100672323 /* Exposer */ = {
 			isa = PBXGroup;
 			children = (
+				014D788C16A1BB9000672323 /* ExposerViewController.h */,
+				014D788D16A1BB9000672323 /* ExposerViewController.m */,
 				014D787E16A1BB7100672323 /* AppDelegate.h */,
 				014D787F16A1BB7100672323 /* AppDelegate.m */,
 				014D787616A1BB7100672323 /* Supporting Files */,
@@ -166,6 +171,7 @@
 			files = (
 				014D787C16A1BB7100672323 /* main.m in Sources */,
 				014D788016A1BB7100672323 /* AppDelegate.m in Sources */,
+				014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
