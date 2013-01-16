@@ -42,7 +42,7 @@
     if (reusableView != nil) {
         [reusableViews removeObjectAtIndex:[reusableViews count] - 1];
     } else {
-        JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame];
+        JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:viewIdentifier];
         reusableView = contentView;
     }
     

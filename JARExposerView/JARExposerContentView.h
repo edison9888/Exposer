@@ -12,6 +12,8 @@
 
 @property (copy, readonly, nonatomic) NSString *reuseIdentifier;
 
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
+
 - (void)prepareForReuse;
 
 @end

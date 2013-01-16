@@ -10,13 +10,19 @@
 
 @implementation JARExposerContentView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithFrame:frame];
     if (self)
     {
+        _reuseIdentifier = reuseIdentifier;
     }
     return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    return [self initWithFrame:frame reuseIdentifier:nil];
 }
 
 - (void)prepareForReuse
