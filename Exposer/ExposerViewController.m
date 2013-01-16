@@ -8,7 +8,11 @@
 
 #import "ExposerViewController.h"
 
-@interface ExposerViewController ()
+#import "JARExposerView.h"
+
+@interface ExposerViewController () <JARExposerViewDataSource, JARExposerViewDelegate>
+
+@property (strong, nonatomic) JARExposerView *presentationView;
 
 @end
 
@@ -28,6 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    JARExposerView *presentationView = [[JARExposerView alloc] initWithFrame:self.view.bounds];
+    presentationView.dataSource = self;
+    presentationView.delegate = self;
+    
+    self.presentationView = presentationView;
+    
+    [self.view addSubview:presentationView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
