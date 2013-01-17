@@ -19,6 +19,7 @@
 @property (weak, nonatomic) id <JARExposerViewDataSource> dataSource;
 
 - (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)viewIdentifier forIndex:(NSUInteger)index;
+- (JARExposerContentView *)contentVewAtIndex:(NSUInteger)index;
 
 - (void)reloadData;
 

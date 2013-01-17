@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExposerViewController : UIViewController
+#import "JARExposerViewController.h"
+
+@interface ExposerViewController : JARExposerViewController
 
 @end

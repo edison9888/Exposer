@@ -1,20 +1,18 @@
 //
-//  ExposerViewController.m
+//  JARExposerViewController.m
 //  Exposer
 //
-//  Created by Jesse Armand on 12/1/13.
+//  Created by Jesse Armand on 17/1/13.
 //  Copyright (c) 2013 Jesse Armand. All rights reserved.
 //
 
-#import "ExposerViewController.h"
+#import "JARExposerViewController.h"
 
-@interface ExposerViewController () 
-
-@property (strong, nonatomic) JARExposerView *presentationView;
+@interface JARExposerViewController () 
 
 @end
 
-@implementation ExposerViewController
+@implementation JARExposerViewController
 
 - (id)init
 {
@@ -30,6 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    JARExposerView *exposerView = [[JARExposerView alloc] initWithFrame:self.view.bounds];
+    exposerView.dataSource = self;
+    exposerView.delegate = self;
+    _exposerView = exposerView;
+    [self.view addSubview:_exposerView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,18 +61,17 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Exposer View
+#pragma mark - JARExposerView data source
 
 - (NSUInteger)numberOfContentViews
 {
-    return 10;
+    return 0;
 }
 
 - (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index
 {
-    static NSString *viewIdentifier = @"ContentView";
-    JARExposerContentView *contentView = [exposerView dequeueReusableViewWithIdentifier:viewIdentifier forIndex:index];
-    return contentView;
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
 
 @end

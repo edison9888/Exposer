@@ -15,6 +15,6 @@
 @required
 - (NSUInteger)numberOfContentViews;
 
-- (JARExposerContentView *)contentView:(JARExposerContentView *)contentView atIndex:(NSUInteger)index;
+- (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index;
 
 @end

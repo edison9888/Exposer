@@ -31,7 +31,14 @@
     return self;
 }
 
-#pragma mark - 
+#pragma mark - UIView
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+}
+
+#pragma mark - Public
 
 - (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)viewIdentifier forIndex:(NSUInteger)index
 {
@@ -49,21 +56,31 @@
     return reusableView;
 }
 
+- (JARExposerContentView *)contentVewAtIndex:(NSUInteger)index
+{
+    JARExposerContentView *contentView;
+    
+    if ([_visibleViews count] > index)
+        contentView = [_visibleViews objectAtIndex:index];
+    
+    return contentView;
+}
+
 - (void)reloadData
 {
+    [_visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[UIView class]])
+            [obj removeFromSuperview];
+    }];
     
+    [_visibleViews removeAllObjects];
+    
+    [self setNeedsLayout];
 }
 
 - (void)scrollToContentViewAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
     
-}
-
-#pragma mark - UIView
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
 }
 
 @end

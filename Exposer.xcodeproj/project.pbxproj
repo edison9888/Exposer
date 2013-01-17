@@ -20,6 +20,7 @@
 		014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788516A1BB7100672323 /* Default-568h@2x.png */; };
 		014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D788D16A1BB9000672323 /* ExposerViewController.m */; };
 		01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */; };
+		01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BF216A7E866001C291F /* JARExposerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		014D788D16A1BB9000672323 /* ExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExposerViewController.m; sourceTree = "<group>"; };
 		01CE6BCF16A68509001C291F /* JARExposerContentViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerContentViewAttributes.h; path = JARExposerView/JARExposerContentViewAttributes.h; sourceTree = "<group>"; };
 		01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentViewAttributes.m; path = JARExposerView/JARExposerContentViewAttributes.m; sourceTree = "<group>"; };
+		01CE6BF116A7E866001C291F /* JARExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerViewController.h; path = JARExposerView/JARExposerViewController.h; sourceTree = "<group>"; };
+		01CE6BF216A7E866001C291F /* JARExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerViewController.m; path = JARExposerView/JARExposerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				011D708F16A3E9B3004975DC /* JARExposerContentView.m */,
 				011D709A16A41255004975DC /* JARExposerViewDataSource.h */,
 				011D709B16A4126A004975DC /* JARExposerViewDelegate.h */,
+				01CE6BF116A7E866001C291F /* JARExposerViewController.h */,
+				01CE6BF216A7E866001C291F /* JARExposerViewController.m */,
 			);
 			name = JARExposerView;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				011D708916A3E5CA004975DC /* JARExposerView.m in Sources */,
 				011D709016A3E9B3004975DC /* JARExposerContentView.m in Sources */,
 				01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */,
+				01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
