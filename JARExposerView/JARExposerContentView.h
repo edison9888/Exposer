@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
+@class JARExposerContentViewAttributes;
 
 @interface JARExposerContentView : UIView
 
@@ -15,5 +18,7 @@
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)prepareForReuse;
+
+- (void)applyAttributes:(JARExposerContentViewAttributes *)attributes;
 
 @end

@@ -7,6 +7,13 @@
 //
 
 #import "JARExposerContentView.h"
+#import "JARExposerContentViewAttributes.h"
+
+@interface JARExposerContentView ()
+
+@property (strong, nonatomic) JARExposerContentViewAttributes *attributes;
+
+@end
 
 @implementation JARExposerContentView
 
@@ -28,6 +35,22 @@
 - (void)prepareForReuse
 {
     
+}
+
+- (void)applyAttributes:(JARExposerContentViewAttributes *)attributes
+{
+    if (attributes != _attributes) {
+        _attributes = attributes;
+        
+        self.frame = attributes.frame;
+        self.center = attributes.center;
+        self.alpha = attributes.alpha;
+        self.hidden = attributes.isHidden;
+        
+        self.layer.transform = attributes.transform3D;
+        self.layer.opacity = attributes.alpha;
+        self.layer.zPosition = attributes.zIndex;
+    }
 }
 
 @end

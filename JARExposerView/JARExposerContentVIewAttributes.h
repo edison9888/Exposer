@@ -14,10 +14,10 @@
 
 @property (nonatomic) CGRect frame;
 @property (nonatomic) CGPoint center;
-@property (nonatomic) CGSize size;
 @property (nonatomic, getter = isHidden) BOOL hidden;
 @property (nonatomic) float alpha;
 @property (nonatomic) CATransform3D transform3D;
+@property (nonatomic) NSInteger zIndex;
 @property (nonatomic) NSUInteger index;
 
 @end
