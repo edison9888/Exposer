@@ -36,6 +36,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    [self updateVisibleViews];
 }
 
 #pragma mark - Public
@@ -44,11 +46,21 @@
 {
     NSMutableArray *reusableViews = [_reuseQueues objectForKey:viewIdentifier];
     JARExposerContentView *reusableView = [reusableViews lastObject];
-    JARExposerContentViewAttributes *attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
+
+    JARExposerContentViewAttributes *attributes;
+    if ([_dataSource respondsToSelector:@selector(contentViewAttributes)])
+        attributes = [_dataSource contentViewAttributes];
     
     if (reusableView != nil) {
         [reusableViews removeObjectAtIndex:[reusableViews count] - 1];
     } else {
+        if (attributes == nil) {
+            attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
+            attributes.frame = self.bounds;
+            attributes.alpha = 1.f;
+            attributes.center = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
+        }
+
         JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:viewIdentifier];
         reusableView = contentView;
     }
@@ -81,6 +93,24 @@
 - (void)scrollToContentViewAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
     
+}
+
+#pragma mark - Private
+
+- (void)updateVisibleViews
+{
+    CGRect visibleBounds = self.bounds;
+    CGFloat pageWidth = CGRectGetWidth(self.bounds);    
+    NSInteger firstVisibleIndex = floorf(CGRectGetMinX(visibleBounds) / pageWidth);
+    firstVisibleIndex = MAX(firstVisibleIndex, 0);
+    NSInteger lastVisibleIndex = floorf((CGRectGetMaxX(visibleBounds)-1) / pageWidth);
+    lastVisibleIndex = MIN(lastVisibleIndex, [self.visibleViews count] - 1);
+    
+    for (JARExposerContentView *contentView in _visibleViews)
+    {
+        if (![contentView isDescendantOfView:self])
+            [self addSubview:contentView];
+    }
 }
 
 @end

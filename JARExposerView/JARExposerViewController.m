@@ -8,6 +8,8 @@
 
 #import "JARExposerViewController.h"
 
+#import "JARExposerContentViewAttributes.h"
+
 @interface JARExposerViewController () 
 
 @end
@@ -66,6 +68,12 @@
 - (NSUInteger)numberOfContentViews
 {
     return 0;
+}
+
+- (JARExposerContentViewAttributes *)contentViewAttributes
+{
+    JARExposerContentViewAttributes *attributes = [[JARExposerContentViewAttributes alloc] init];
+    return attributes;
 }
 
 - (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index

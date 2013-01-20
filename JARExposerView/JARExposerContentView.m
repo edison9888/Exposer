@@ -42,6 +42,8 @@
     if (attributes != _attributes) {
         _attributes = attributes;
         
+        _index = attributes.index;
+        
         self.frame = attributes.frame;
         self.center = attributes.center;
         self.alpha = attributes.alpha;

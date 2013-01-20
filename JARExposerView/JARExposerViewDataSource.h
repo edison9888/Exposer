@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class JARExposerContentView;
+@class JARExposerContentViewAttributes;
 
 @protocol JARExposerViewDataSource <NSObject>
 
@@ -16,5 +17,6 @@
 - (NSUInteger)numberOfContentViews;
 
 - (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index;
+- (JARExposerContentViewAttributes *)contentViewAttributes;
 
 @end
