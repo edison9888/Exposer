@@ -8,9 +8,6 @@
 
 #import "JARExposerView.h"
 
-#import "JARExposerContentViewAttributes.h"
-#import "JARExposerContentView.h"
-
 @interface JARExposerView ()
 
 @property (strong, nonatomic) NSMutableArray *visibleViews;
@@ -62,6 +59,10 @@
         }
 
         JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:reuseIdentifier];
+        CGRect frame = contentView.frame;
+        frame.origin.x = frame.origin.x + CGRectGetWidth(frame)*index;
+        contentView.frame = frame;
+
         [contentView applyAttributes:attributes];
         reusableView = contentView;
     }
@@ -118,11 +119,14 @@
 - (void)updateVisibleViews
 {
     CGRect visibleBounds = self.bounds;
-    CGFloat pageWidth = CGRectGetWidth(self.bounds);    
+    CGFloat pageWidth = CGRectGetWidth(self.bounds);
+    
+    NSUInteger numOfVisibleViews = [_visibleViews count];
+        
     NSInteger firstVisibleIndex = floorf(CGRectGetMinX(visibleBounds) / pageWidth);
     firstVisibleIndex = MAX(firstVisibleIndex, 0);
     NSInteger lastVisibleIndex = floorf((CGRectGetMaxX(visibleBounds)-1) / pageWidth);
-    lastVisibleIndex = MIN(lastVisibleIndex, [self.visibleViews count] - 1);
+    lastVisibleIndex = MIN(lastVisibleIndex, numOfVisibleViews - 1);
     
     NSArray *visibleViews = [_visibleViews copy];
     for (JARExposerContentView *contentView in visibleViews)
@@ -135,20 +139,31 @@
     
     visibleViews = [_visibleViews copy];
     
+    if (numOfVisibleViews == 0)
+        lastVisibleIndex = [self.dataSource numberOfContentViews];
+    
     for (NSInteger pageIndex = firstVisibleIndex; pageIndex < lastVisibleIndex; ++pageIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
-        [visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            JARExposerContentView *visibleContentView = obj;
-            if (visibleContentView.index > pageIndex) {
-                [_visibleViews insertObject:contentView atIndex:idx];
-            } else if (visibleContentView.index < pageIndex) {
-                [_visibleViews addObject:contentView];
-            }
-            
+        
+        if ([visibleViews count] == 0) {
+            [_visibleViews addObject:contentView];
             [self addSubview:contentView];
-        }];
+        } else {
+            [visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                JARExposerContentView *visibleContentView = obj;
+                if (visibleContentView.index > pageIndex) {
+                    [_visibleViews insertObject:contentView atIndex:idx];
+                } else if (visibleContentView.index < pageIndex) {
+                    [_visibleViews addObject:contentView];
+                }
+                
+                [self addSubview:contentView];
+            }];
+        }
     }
+    
+    self.contentSize = CGSizeMake(numOfVisibleViews * pageWidth, CGRectGetHeight(self.bounds));
 }
 
 @end

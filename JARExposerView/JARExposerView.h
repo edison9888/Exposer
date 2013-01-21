@@ -10,6 +10,8 @@
 
 #import "JARExposerViewDelegate.h"
 #import "JARExposerViewDataSource.h"
+#import "JARExposerContentViewAttributes.h"
+#import "JARExposerContentView.h"
 
 @class JARExposerContentView;
 
