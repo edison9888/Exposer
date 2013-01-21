@@ -62,6 +62,7 @@
         }
 
         JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:reuseIdentifier];
+        [contentView applyAttributes:attributes];
         reusableView = contentView;
     }
     
