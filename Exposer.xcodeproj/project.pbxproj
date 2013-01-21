@@ -19,6 +19,7 @@
 		014D788416A1BB7100672323 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788316A1BB7100672323 /* Default@2x.png */; };
 		014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788516A1BB7100672323 /* Default-568h@2x.png */; };
 		014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D788D16A1BB9000672323 /* ExposerViewController.m */; };
+		017E854616AD3AD7001930E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017E854516AD3AD7001930E2 /* QuartzCore.framework */; };
 		01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */; };
 		01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BF216A7E866001C291F /* JARExposerViewController.m */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		014D788516A1BB7100672323 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		014D788C16A1BB9000672323 /* ExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExposerViewController.h; sourceTree = "<group>"; };
 		014D788D16A1BB9000672323 /* ExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExposerViewController.m; sourceTree = "<group>"; };
+		017E854516AD3AD7001930E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		01CE6BCF16A68509001C291F /* JARExposerContentViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerContentViewAttributes.h; path = JARExposerView/JARExposerContentViewAttributes.h; sourceTree = "<group>"; };
 		01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentViewAttributes.m; path = JARExposerView/JARExposerContentViewAttributes.m; sourceTree = "<group>"; };
 		01CE6BF116A7E866001C291F /* JARExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerViewController.h; path = JARExposerView/JARExposerViewController.h; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017E854616AD3AD7001930E2 /* QuartzCore.framework in Frameworks */,
 				014D787016A1BB7100672323 /* UIKit.framework in Frameworks */,
 				014D787216A1BB7100672323 /* Foundation.framework in Frameworks */,
 				014D787416A1BB7100672323 /* CoreGraphics.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		014D786E16A1BB7100672323 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				017E854516AD3AD7001930E2 /* QuartzCore.framework */,
 				014D786F16A1BB7100672323 /* UIKit.framework */,
 				014D787116A1BB7100672323 /* Foundation.framework */,
 				014D787316A1BB7100672323 /* CoreGraphics.framework */,
