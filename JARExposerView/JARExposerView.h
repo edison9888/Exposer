@@ -18,8 +18,8 @@
 @property (weak, nonatomic) id <JARExposerViewDelegate> delegate;
 @property (weak, nonatomic) id <JARExposerViewDataSource> dataSource;
 
-- (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)viewIdentifier forIndex:(NSUInteger)index;
-- (JARExposerContentView *)contentVewAtIndex:(NSUInteger)index;
+- (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)reuseIdentifier forIndex:(NSUInteger)index;
+- (JARExposerContentView *)contentViewAtIndex:(NSUInteger)index;
 
 - (void)reloadData;
 

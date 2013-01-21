@@ -42,14 +42,14 @@
 
 #pragma mark - Public
 
-- (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)viewIdentifier forIndex:(NSUInteger)index
+- (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)reuseIdentifier forIndex:(NSUInteger)index
 {
-    NSMutableArray *reusableViews = [_reuseQueues objectForKey:viewIdentifier];
+    NSMutableArray *reusableViews = _reuseQueues[reuseIdentifier];
     JARExposerContentView *reusableView = [reusableViews lastObject];
 
     JARExposerContentViewAttributes *attributes;
-    if ([_dataSource respondsToSelector:@selector(contentViewAttributes)])
-        attributes = [_dataSource contentViewAttributes];
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributes)])
+        attributes = [self.dataSource contentViewAttributes];
     
     if (reusableView != nil) {
         [reusableViews removeObjectAtIndex:[reusableViews count] - 1];
@@ -61,14 +61,14 @@
             attributes.center = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
         }
 
-        JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:viewIdentifier];
+        JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:reuseIdentifier];
         reusableView = contentView;
     }
     
     return reusableView;
 }
 
-- (JARExposerContentView *)contentVewAtIndex:(NSUInteger)index
+- (JARExposerContentView *)contentViewAtIndex:(NSUInteger)index
 {
     JARExposerContentView *contentView;
     
@@ -97,6 +97,23 @@
 
 #pragma mark - Private
 
+- (void)reuseView:(JARExposerContentView *)view
+{
+    NSString *reuseIdentifier = view.reuseIdentifier;
+    NSParameterAssert([reuseIdentifier length]);
+    
+    [view removeFromSuperview];
+    [view prepareForReuse];
+    
+    NSMutableArray *reusableViews = _reuseQueues[reuseIdentifier];
+    if (reusableViews == nil) {
+        reusableViews = [NSMutableArray arrayWithCapacity:0];
+        _reuseQueues[reuseIdentifier] = reusableViews;
+    }
+    
+    [reusableViews addObject:view];
+}
+
 - (void)updateVisibleViews
 {
     CGRect visibleBounds = self.bounds;
@@ -106,10 +123,30 @@
     NSInteger lastVisibleIndex = floorf((CGRectGetMaxX(visibleBounds)-1) / pageWidth);
     lastVisibleIndex = MIN(lastVisibleIndex, [self.visibleViews count] - 1);
     
-    for (JARExposerContentView *contentView in _visibleViews)
+    NSArray *visibleViews = [_visibleViews copy];
+    for (JARExposerContentView *contentView in visibleViews)
     {
-        if (![contentView isDescendantOfView:self])
+        if (contentView.index < firstVisibleIndex || contentView.index > lastVisibleIndex) {
+            [self reuseView:contentView];
+            [_visibleViews removeObject:contentView];
+        }
+    }
+    
+    visibleViews = [_visibleViews copy];
+    
+    for (NSInteger pageIndex = firstVisibleIndex; pageIndex < lastVisibleIndex; ++pageIndex)
+    {
+        JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
+        [visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            JARExposerContentView *visibleContentView = obj;
+            if (visibleContentView.index > pageIndex) {
+                [_visibleViews insertObject:contentView atIndex:idx];
+            } else if (visibleContentView.index < pageIndex) {
+                [_visibleViews addObject:contentView];
+            }
+            
             [self addSubview:contentView];
+        }];
     }
 }
 
