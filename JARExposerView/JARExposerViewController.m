@@ -72,8 +72,8 @@
 
 - (JARExposerContentViewAttributes *)contentViewAttributes
 {
-    JARExposerContentViewAttributes *attributes = [[JARExposerContentViewAttributes alloc] init];
-    return attributes;
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
 
 - (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index
