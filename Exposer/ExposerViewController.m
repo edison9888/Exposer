@@ -64,10 +64,19 @@
     return 10;
 }
 
+- (JARExposerContentViewAttributes *)contentViewAttributes
+{
+    JARExposerContentViewAttributes *attributes = [[JARExposerContentViewAttributes alloc] init];
+    attributes.frame = CGRectMake(10, 10, 300, 440);
+    attributes.alpha = 1.f;
+    return attributes;
+}
+
 - (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index
 {
     static NSString *viewIdentifier = @"ContentView";
     JARExposerContentView *contentView = [exposerView dequeueReusableViewWithIdentifier:viewIdentifier forIndex:index];
+    contentView.backgroundColor = [UIColor redColor];
     return contentView;
 }
 
