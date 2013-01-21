@@ -43,15 +43,9 @@
         _attributes = attributes;
         
         _index = attributes.index;
-        
-        self.frame = attributes.frame;
-        self.center = attributes.center;
+                
         self.alpha = attributes.alpha;
         self.hidden = attributes.isHidden;
-        
-        self.layer.transform = attributes.transform3D;
-        self.layer.opacity = attributes.alpha;
-        self.layer.zPosition = attributes.zIndex;
     }
 }
 
