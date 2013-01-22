@@ -64,10 +64,11 @@
     return 10;
 }
 
-- (JARExposerContentViewAttributes *)contentViewAttributes
+- (JARExposerContentViewAttributes *)contentViewAttributesAtIndex:(NSUInteger)index
 {
-    JARExposerContentViewAttributes *attributes = [[JARExposerContentViewAttributes alloc] init];
-    attributes.frame = CGRectMake(10, 10, 300, 440);
+    JARExposerContentViewAttributes *attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
+    attributes.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    attributes.bounds = CGRectMake(0, 0, 320, 460);
     attributes.alpha = 1.f;
     return attributes;
 }

@@ -45,27 +45,37 @@
     JARExposerContentView *reusableView = [reusableViews lastObject];
 
     JARExposerContentViewAttributes *attributes;
-    if ([self.dataSource respondsToSelector:@selector(contentViewAttributes)])
-        attributes = [self.dataSource contentViewAttributes];
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        attributes = [self.dataSource contentViewAttributesAtIndex:index];
+    }
     
     if (reusableView != nil) {
         [reusableViews removeObjectAtIndex:[reusableViews count] - 1];
     } else {
         if (attributes == nil) {
             attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
-            attributes.frame = self.bounds;
-            attributes.alpha = 1.f;
+            attributes.edgeInsets = UIEdgeInsetsZero;
             attributes.center = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
+            attributes.bounds = self.bounds;
+            attributes.alpha = 1.f;
+            attributes.index = index;
         }
 
-        JARExposerContentView *contentView = [[JARExposerContentView alloc] initWithFrame:attributes.frame reuseIdentifier:reuseIdentifier];
-        CGRect frame = contentView.frame;
-        frame.origin.x = frame.origin.x + CGRectGetWidth(frame)*index;
-        contentView.frame = frame;
-
-        [contentView applyAttributes:attributes];
-        reusableView = contentView;
+        reusableView = [[JARExposerContentView alloc] initWithAttributes:attributes reuseIdentifier:reuseIdentifier];
     }
+    
+    UIEdgeInsets edgeInsets = attributes.edgeInsets;
+    
+    CGRect frame = reusableView.frame;
+    CGFloat width = CGRectGetWidth(attributes.bounds) - (edgeInsets.left + edgeInsets.right);
+    CGFloat height = CGRectGetHeight(attributes.bounds) - (edgeInsets.top + edgeInsets.bottom);
+    
+    frame.origin.x = edgeInsets.left + (edgeInsets.left + width + edgeInsets.right)*index;
+    frame.origin.y = edgeInsets.top;
+    frame.size.width = width;
+    frame.size.height = height;
+    reusableView.frame = frame;
+    [reusableView applyAttributes:attributes];
     
     return reusableView;
 }
@@ -99,6 +109,14 @@
 
 #pragma mark - Private
 
+- (void)updateContentSize
+{
+    NSUInteger numberOfContentViews = [self.dataSource numberOfContentViews];
+    CGFloat pageWidth = CGRectGetWidth(self.bounds);
+    
+    self.contentSize = CGSizeMake(numberOfContentViews * pageWidth, CGRectGetHeight(self.bounds));
+}
+
 - (void)reuseView:(JARExposerContentView *)view
 {
     NSString *reuseIdentifier = view.reuseIdentifier;
@@ -118,15 +136,17 @@
 
 - (void)updateVisibleViews
 {
-    CGRect visibleBounds = self.bounds;
-    CGFloat pageWidth = CGRectGetWidth(self.bounds);
+    [self updateContentSize];
     
-    NSUInteger numOfVisibleViews = [_visibleViews count];
+    CGRect visibleBounds = self.bounds;
+    CGFloat pageWidth = CGRectGetWidth(visibleBounds);
+    
+    NSUInteger numOfContentViews = [self.dataSource numberOfContentViews];
         
-    NSInteger firstVisibleIndex = floorf(CGRectGetMinX(visibleBounds) / pageWidth);
+    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / pageWidth);
     firstVisibleIndex = MAX(firstVisibleIndex, 0);
-    NSInteger lastVisibleIndex = floorf((CGRectGetMaxX(visibleBounds)-1) / pageWidth);
-    lastVisibleIndex = MIN(lastVisibleIndex, numOfVisibleViews - 1);
+    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + pageWidth) / pageWidth);
+    lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
     
     NSArray *visibleViews = [_visibleViews copy];
     for (JARExposerContentView *contentView in visibleViews)
@@ -139,31 +159,18 @@
     
     visibleViews = [_visibleViews copy];
     
-    if (numOfVisibleViews == 0)
-        lastVisibleIndex = [self.dataSource numberOfContentViews];
-    
-    for (NSInteger pageIndex = firstVisibleIndex; pageIndex < lastVisibleIndex; ++pageIndex)
+    for (NSInteger pageIndex = firstVisibleIndex; pageIndex <= lastVisibleIndex; ++pageIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
         
-        if ([visibleViews count] == 0) {
+        if (contentView.index >= [visibleViews count]) {
             [_visibleViews addObject:contentView];
             [self addSubview:contentView];
-        } else {
-            [visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                JARExposerContentView *visibleContentView = obj;
-                if (visibleContentView.index > pageIndex) {
-                    [_visibleViews insertObject:contentView atIndex:idx];
-                } else if (visibleContentView.index < pageIndex) {
-                    [_visibleViews addObject:contentView];
-                }
-                
-                [self addSubview:contentView];
-            }];
+        } else if (contentView.index <= firstVisibleIndex) {
+            [_visibleViews insertObject:contentView atIndex:0];
+            [self addSubview:contentView];
         }
     }
-    
-    self.contentSize = CGSizeMake(numOfVisibleViews * pageWidth, CGRectGetHeight(self.bounds));
 }
 
 @end

@@ -16,7 +16,7 @@
 @property (copy, readonly, nonatomic) NSString *reuseIdentifier;
 @property (readonly, nonatomic) NSUInteger index;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
+- (id)initWithAttributes:(JARExposerContentViewAttributes *)attributes reuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)prepareForReuse;
 

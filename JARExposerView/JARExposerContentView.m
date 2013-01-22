@@ -17,19 +17,36 @@
 
 @implementation JARExposerContentView
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithAttributes:(JARExposerContentViewAttributes *)attributes reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectZero];
     if (self)
     {
-        _reuseIdentifier = reuseIdentifier;
+        if (attributes == nil) {
+            _attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:0];
+            _attributes.bounds = [[UIScreen mainScreen] bounds];
+            _attributes.center = CGPointMake(CGRectGetWidth(_attributes.bounds)/2, CGRectGetHeight(_attributes.bounds)/2);
+            _attributes.alpha = 1.f;
+        } else {
+            _attributes = attributes;
+        }
+        
+        _index = _attributes.index;
+        
+        self.center = _attributes.center;
+        self.bounds = _attributes.bounds;
+        
+        if ([reuseIdentifier length] == 0)
+            _reuseIdentifier = @"JARExposerContentView";
+        else
+            _reuseIdentifier = reuseIdentifier;
     }
     return self;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
-    return [self initWithFrame:frame reuseIdentifier:nil];
+    return [self initWithAttributes:nil reuseIdentifier:nil];
 }
 
 - (void)prepareForReuse

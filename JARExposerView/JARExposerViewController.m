@@ -70,7 +70,7 @@
     return 0;
 }
 
-- (JARExposerContentViewAttributes *)contentViewAttributes
+- (JARExposerContentViewAttributes *)contentViewAttributesAtIndex:(NSUInteger)index
 {
     [self doesNotRecognizeSelector:_cmd];
     return nil;

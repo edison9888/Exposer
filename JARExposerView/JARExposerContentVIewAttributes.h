@@ -12,8 +12,9 @@
 
 + (JARExposerContentViewAttributes *)contentViewAttributesForIndex:(NSUInteger)index;
 
-@property (nonatomic) CGRect frame;
+@property (nonatomic) CGRect bounds;
 @property (nonatomic) CGPoint center;
+@property (nonatomic) UIEdgeInsets edgeInsets;
 @property (nonatomic, getter = isHidden) BOOL hidden;
 @property (nonatomic) float alpha;
 @property (nonatomic) CATransform3D transform3D;
