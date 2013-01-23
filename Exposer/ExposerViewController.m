@@ -68,7 +68,7 @@
 {
     JARExposerContentViewAttributes *attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
     attributes.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    attributes.bounds = CGRectMake(0, 0, 320, 460);
+    attributes.bounds = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
     attributes.alpha = 1.f;
     return attributes;
 }

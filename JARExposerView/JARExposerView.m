@@ -111,10 +111,22 @@
 
 - (void)updateContentSize
 {
-    NSUInteger numberOfContentViews = [self.dataSource numberOfContentViews];
     CGFloat pageWidth = CGRectGetWidth(self.bounds);
     
-    self.contentSize = CGSizeMake(numberOfContentViews * pageWidth, CGRectGetHeight(self.bounds));
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
+        CGFloat attributesWidth = CGRectGetWidth(attributes.bounds);
+        if (attributesWidth > pageWidth)
+            pageWidth = attributesWidth;
+    }
+ 
+    NSUInteger numberOfContentViews = 0;
+    if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
+        numberOfContentViews = [self.dataSource numberOfContentViews];
+    
+    CGFloat contentWidth = (numberOfContentViews > 0) ? (numberOfContentViews * pageWidth) : pageWidth;
+    
+    self.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(self.bounds));
 }
 
 - (void)reuseView:(JARExposerContentView *)view
