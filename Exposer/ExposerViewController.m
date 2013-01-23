@@ -76,8 +76,26 @@
 - (JARExposerContentView *)exposerView:(JARExposerView *)exposerView contentViewAtIndex:(NSUInteger)index
 {
     static NSString *viewIdentifier = @"ContentView";
+    
     JARExposerContentView *contentView = [exposerView dequeueReusableViewWithIdentifier:viewIdentifier forIndex:index];
+    
+    if ([[contentView.layer sublayers] count] == 0) {
+        CGFloat contentWidth = (CGRectGetWidth(contentView.bounds) - 20.f)/2;
+        
+        CGPoint center = CGPointMake(CGRectGetWidth(contentView.bounds)/2, CGRectGetHeight(contentView.bounds)/2);
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:center radius:contentWidth startAngle:0.f endAngle:2*M_PI clockwise:NO];
+        
+        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+        shapeLayer.path = bezierPath.CGPath;
+        shapeLayer.fillColor = [UIColor blueColor].CGColor;
+        shapeLayer.strokeColor = [UIColor yellowColor].CGColor;
+        shapeLayer.lineWidth = 10.f;
+        
+        [contentView.layer addSublayer:shapeLayer];
+    }
+    
     contentView.backgroundColor = [UIColor redColor];
+    
     return contentView;
 }
 

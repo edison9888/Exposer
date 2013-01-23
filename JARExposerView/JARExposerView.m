@@ -174,14 +174,13 @@
     for (NSInteger pageIndex = firstVisibleIndex; pageIndex <= lastVisibleIndex; ++pageIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
-        contentView.animatePresentation = animated;
         
         if (contentView.index >= [visibleViews count]) {
             [_visibleViews addObject:contentView];
-            [self addSubview:contentView];
+            [contentView presentOnView:self animated:animated];
         } else if (contentView.index <= firstVisibleIndex) {
             [_visibleViews insertObject:contentView atIndex:0];
-            [self addSubview:contentView];
+            [contentView presentOnView:self animated:animated];
         }
     }
 }

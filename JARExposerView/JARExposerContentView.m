@@ -49,21 +49,6 @@
     return [self initWithAttributes:nil reuseIdentifier:nil];
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
-    if (self.animatePresentation) {
-        CATransform3D initialTransform = CATransform3DMakeScale(0.01, 0.01, 0.01);
-        CATransform3D finalTransform = CATransform3DMakeScale(0.25, 0.25, 0.25);
-        
-        [self addTransformAnimationForKey:@"InitialScaling" initialTransform:initialTransform finalTransform:finalTransform];
-    }
-}
-
-- (void)prepareForReuse
-{
-    
-}
-
 - (void)applyAttributes:(JARExposerContentViewAttributes *)attributes
 {
     if (attributes != _attributes) {
@@ -76,7 +61,38 @@
     }
 }
 
-- (void)addTransformAnimationForKey:(NSString *)key
+- (void)presentOnView:(UIView *)containerView animated:(BOOL)animated
+{
+    if ([self isDescendantOfView:containerView])
+        return;
+    
+    if (animated) {
+        CATransform3D initialTransform = CATransform3DMakeScale(0.01, 0.01, 0.01);
+        CATransform3D finalTransform = CATransform3DMakeScale(1.0, 1.0, 1.0);
+        CABasicAnimation *scalingAnimation = [self transformAnimationForKey:@"Scale" initialTransform:initialTransform finalTransform:finalTransform];
+        
+        CATransform3D rotateTransform = CATransform3DRotate(initialTransform, M_PI, 0.0, 1.0, 0.0);
+        CABasicAnimation *rotateAnimation = [self transformAnimationForKey:@"Rotate" initialTransform:rotateTransform finalTransform:self.layer.transform];
+        
+        CAAnimationGroup *groupAnimation = (CAAnimationGroup *)[self.layer animationForKey:@"RotateAndScale"];
+        if (groupAnimation == nil) {
+            groupAnimation = [CAAnimationGroup animation];
+            groupAnimation.animations = @[scalingAnimation, rotateAnimation];
+            groupAnimation.duration = 0.5;
+            groupAnimation.delegate = self;
+            [self.layer addAnimation:groupAnimation forKey:@"RotateAndScale"];
+        }
+    }
+    
+    [containerView addSubview:self];
+}
+
+- (void)prepareForReuse
+{
+    
+}
+
+- (CABasicAnimation *)transformAnimationForKey:(NSString *)key
                    initialTransform:(CATransform3D)initialTransform
                      finalTransform:(CATransform3D)finalTransform
 {
@@ -88,8 +104,8 @@
         transformAnimation.toValue = [NSValue valueWithCATransform3D:finalTransform];
         transformAnimation.duration = 0.5;
         transformAnimation.delegate = self;
-        [self.layer addAnimation:transformAnimation forKey:key];
     }
+    return transformAnimation;
 }
 
 
@@ -101,15 +117,6 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    NSString *animationId = [anim valueForKey:@"animationId"];
-    if ([animationId isEqualToString:@"InitialScaling"]) {
-        CATransform3D initialTransform = self.layer.transform;
-        CATransform3D rotateTransform = CATransform3DRotate(initialTransform, M_PI, 0.0, 1.0, 0.0);
-        CATransform3D scaleTransform = CATransform3DMakeScale(1.0, 1.0, 1.0);
-        CATransform3D finalTransform = CATransform3DConcat(rotateTransform, scaleTransform);
-
-        [self addTransformAnimationForKey:@"FinalScalingAndRotate" initialTransform:initialTransform finalTransform:finalTransform];
-    } 
 }
 
 @end
