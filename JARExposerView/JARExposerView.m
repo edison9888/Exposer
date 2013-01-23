@@ -34,7 +34,7 @@
 {
     [super layoutSubviews];
     
-    [self updateVisibleViews];
+    [self updateVisibleViewsAnimated:YES];
 }
 
 #pragma mark - Public
@@ -146,7 +146,7 @@
     [reusableViews addObject:view];
 }
 
-- (void)updateVisibleViews
+- (void)updateVisibleViewsAnimated:(BOOL)animated
 {
     [self updateContentSize];
     
@@ -174,6 +174,7 @@
     for (NSInteger pageIndex = firstVisibleIndex; pageIndex <= lastVisibleIndex; ++pageIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
+        contentView.animatePresentation = animated;
         
         if (contentView.index >= [visibleViews count]) {
             [_visibleViews addObject:contentView];

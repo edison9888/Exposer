@@ -49,6 +49,16 @@
     return [self initWithAttributes:nil reuseIdentifier:nil];
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    if (self.animatePresentation) {
+        CATransform3D initialTransform = CATransform3DMakeScale(0.01, 0.01, 0.01);
+        CATransform3D finalTransform = CATransform3DMakeScale(0.25, 0.25, 0.25);
+        
+        [self addTransformAnimationForKey:@"InitialScaling" initialTransform:initialTransform finalTransform:finalTransform];
+    }
+}
+
 - (void)prepareForReuse
 {
     
@@ -64,6 +74,42 @@
         self.alpha = attributes.alpha;
         self.hidden = attributes.isHidden;
     }
+}
+
+- (void)addTransformAnimationForKey:(NSString *)key
+                   initialTransform:(CATransform3D)initialTransform
+                     finalTransform:(CATransform3D)finalTransform
+{
+    CABasicAnimation *transformAnimation = (CABasicAnimation *)[self.layer animationForKey:key];
+    if (transformAnimation == nil) {
+        transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+        [transformAnimation setValue:key forKey:@"animationId"];
+        transformAnimation.fromValue  = [NSValue valueWithCATransform3D:initialTransform];
+        transformAnimation.toValue = [NSValue valueWithCATransform3D:finalTransform];
+        transformAnimation.duration = 0.5;
+        transformAnimation.delegate = self;
+        [self.layer addAnimation:transformAnimation forKey:key];
+    }
+}
+
+
+#pragma mark - CAAnimation delegate
+
+- (void)animationDidStart:(CAAnimation *)anim
+{
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    NSString *animationId = [anim valueForKey:@"animationId"];
+    if ([animationId isEqualToString:@"InitialScaling"]) {
+        CATransform3D initialTransform = self.layer.transform;
+        CATransform3D rotateTransform = CATransform3DRotate(initialTransform, M_PI, 0.0, 1.0, 0.0);
+        CATransform3D scaleTransform = CATransform3DMakeScale(1.0, 1.0, 1.0);
+        CATransform3D finalTransform = CATransform3DConcat(rotateTransform, scaleTransform);
+
+        [self addTransformAnimationForKey:@"FinalScalingAndRotate" initialTransform:initialTransform finalTransform:finalTransform];
+    } 
 }
 
 @end

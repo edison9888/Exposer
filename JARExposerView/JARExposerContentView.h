@@ -13,6 +13,8 @@
 
 @interface JARExposerContentView : UIView
 
+@property (nonatomic) BOOL animatePresentation;
+
 @property (copy, readonly, nonatomic) NSString *reuseIdentifier;
 @property (readonly, nonatomic) NSUInteger index;
 
