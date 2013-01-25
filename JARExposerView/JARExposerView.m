@@ -174,6 +174,7 @@
     for (NSInteger pageIndex = firstVisibleIndex; pageIndex <= lastVisibleIndex; ++pageIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
+        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         if (contentView.index >= [visibleViews count]) {
             

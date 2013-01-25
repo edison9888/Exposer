@@ -27,11 +27,13 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    self.view = [[UIView alloc] initWithFrame:screenBounds];
     
     JARExposerView *exposerView = [[JARExposerView alloc] initWithFrame:self.view.bounds];
+    exposerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     exposerView.dataSource = self;
     exposerView.delegate = self;
     _exposerView = exposerView;
@@ -61,6 +63,18 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Autorotation
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self.exposerView reloadData];
 }
 
 #pragma mark - JARExposerView data source
