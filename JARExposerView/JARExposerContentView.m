@@ -17,6 +17,23 @@
 
 @implementation JARExposerContentView
 
+#pragma mark - NSObject
+
+- (NSUInteger)hash
+{
+    return self.index;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:[JARExposerContentView class]])
+        return NO;
+        
+    return ([object index] == self.index);
+}
+
+#pragma mark - UIView
+
 - (id)initWithAttributes:(JARExposerContentViewAttributes *)attributes reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithFrame:CGRectZero];
@@ -92,9 +109,7 @@
     
 }
 
-- (CABasicAnimation *)transformAnimationForKey:(NSString *)key
-                   initialTransform:(CATransform3D)initialTransform
-                     finalTransform:(CATransform3D)finalTransform
+- (CABasicAnimation *)transformAnimationForKey:(NSString *)key initialTransform:(CATransform3D)initialTransform finalTransform:(CATransform3D)finalTransform
 {
     CABasicAnimation *transformAnimation = (CABasicAnimation *)[self.layer animationForKey:key];
     if (transformAnimation == nil) {

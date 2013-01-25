@@ -176,11 +176,18 @@
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
         
         if (contentView.index >= [visibleViews count]) {
-            [_visibleViews addObject:contentView];
-            [contentView presentOnView:self animated:animated];
+            
+            if (![_visibleViews containsObject:contentView]) {
+                [_visibleViews addObject:contentView];
+                [contentView presentOnView:self animated:animated];
+            }
+            
         } else if (contentView.index <= firstVisibleIndex) {
-            [_visibleViews insertObject:contentView atIndex:0];
-            [contentView presentOnView:self animated:animated];
+            
+            if (![_visibleViews containsObject:contentView]) {
+                [_visibleViews insertObject:contentView atIndex:0];
+                [contentView presentOnView:self animated:animated];
+            }
         }
     }
 }
