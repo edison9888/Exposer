@@ -193,4 +193,49 @@
     }
 }
 
+- (NSUInteger)indexOfViewAtPoint:(CGPoint)point
+{
+    __block NSUInteger viewIndex = NSNotFound;
+    
+    [_visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        JARExposerContentView *visibleView = obj;
+        
+        if (CGRectContainsPoint(visibleView.frame, point)) {
+            viewIndex = visibleView.index;
+            *stop = YES;
+        }
+    }];
+    
+    return viewIndex;
+}
+
+#pragma mark - Touch handling
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
+    
+    NSInteger viewIndex = [self indexOfViewAtPoint:touchPoint];
+    if (viewIndex != NSNotFound && [self.delegate respondsToSelector:@selector(exposerView:didSelectContentViewAtIndex:)])
+        [self.delegate exposerView:self didSelectContentViewAtIndex:viewIndex];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesCancelled:touches withEvent:event];
+}
+
 @end

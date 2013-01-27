@@ -102,4 +102,9 @@
     return contentView;
 }
 
+- (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
+{
+    NSLog(@"Selected content view at %d", index);
+}
+
 @end
