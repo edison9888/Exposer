@@ -10,7 +10,7 @@
 
 @interface JARExposerContentViewAttributes : NSObject
 
-+ (JARExposerContentViewAttributes *)contentViewAttributesForIndex:(NSUInteger)index;
++ (instancetype)contentViewAttributesForIndex:(NSUInteger)index;
 
 @property (nonatomic) CGRect bounds;
 @property (nonatomic) CGPoint center;
