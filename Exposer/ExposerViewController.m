@@ -104,7 +104,15 @@
 
 - (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
 {
-    NSLog(@"Selected content view at %d", index);
+    JARExposerContentView *contentView = [exposerView contentViewAtIndex:index];
+    
+    [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
+        contentView.layer.transform = CATransform3DMakeRotation(5, 0, 0, 1);
+    } completion:^(BOOL finished) {
+        contentView.transform = CGAffineTransformMakeRotation(0);
+    }];
+    
+    NSLog(@"Selected content view %@", contentView);
 }
 
 @end
