@@ -106,10 +106,14 @@
 {
     JARExposerContentView *contentView = [exposerView contentViewAtIndex:index];
     
-    [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
-        contentView.layer.transform = CATransform3DMakeRotation(5, 0, 0, 1);
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        contentView.layer.transform = CATransform3DMakeRotation(M_PI_2/3, 0, 0, 1);
     } completion:^(BOOL finished) {
-        contentView.transform = CGAffineTransformMakeRotation(0);
+        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            contentView.layer.transform = CATransform3DMakeRotation(-M_PI_2/3, 0, 0, 1);
+        } completion:^(BOOL finished) {
+            contentView.transform = CGAffineTransformMakeRotation(0);
+        }];
     }];
     
     NSLog(@"Selected content view %@", contentView);
