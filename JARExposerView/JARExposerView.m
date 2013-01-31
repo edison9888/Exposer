@@ -82,11 +82,15 @@
 
 - (JARExposerContentView *)contentViewAtIndex:(NSUInteger)index
 {
-    JARExposerContentView *contentView;
+    __block JARExposerContentView *contentView;
     
-    if ([_visibleViews count] > index)
-        contentView = [_visibleViews objectAtIndex:index];
-    
+    [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[JARExposerContentView class]]) {
+            if ([obj index] == index)
+                contentView = obj;
+        }
+    }];
+        
     return contentView;
 }
 
