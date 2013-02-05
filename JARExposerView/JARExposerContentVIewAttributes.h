@@ -12,7 +12,7 @@
 
 + (instancetype)contentViewAttributesForIndex:(NSUInteger)index;
 
-@property (nonatomic) CGRect bounds;
+@property (nonatomic) CGSize size;
 @property (nonatomic) CGPoint center;
 @property (nonatomic) UIEdgeInsets edgeInsets;
 @property (nonatomic, getter = isHidden) BOOL hidden;

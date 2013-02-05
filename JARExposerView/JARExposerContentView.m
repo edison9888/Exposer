@@ -41,8 +41,8 @@
     {
         if (attributes == nil) {
             _attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:0];
-            _attributes.bounds = [[UIScreen mainScreen] bounds];
-            _attributes.center = CGPointMake(CGRectGetWidth(_attributes.bounds)/2, CGRectGetHeight(_attributes.bounds)/2);
+            _attributes.size = [[UIScreen mainScreen] bounds].size;
+            _attributes.center = CGPointMake(_attributes.size.width/2, _attributes.size.height/2);
             _attributes.alpha = 1.f;
         } else {
             _attributes = attributes;
@@ -51,7 +51,7 @@
         _index = _attributes.index;
         
         self.center = _attributes.center;
-        self.bounds = _attributes.bounds;
+        self.bounds = CGRectMake(0, 0, _attributes.size.width, _attributes.size.height);
         
         if ([reuseIdentifier length] == 0)
             _reuseIdentifier = @"JARExposerContentView";

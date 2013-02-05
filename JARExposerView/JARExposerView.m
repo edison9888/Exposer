@@ -56,7 +56,7 @@
             attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
             attributes.edgeInsets = UIEdgeInsetsZero;
             attributes.center = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
-            attributes.bounds = self.bounds;
+            attributes.size = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
             attributes.alpha = 1.f;
             attributes.index = index;
         }
@@ -67,8 +67,8 @@
     UIEdgeInsets edgeInsets = attributes.edgeInsets;
     
     CGRect frame = reusableView.frame;
-    CGFloat width = CGRectGetWidth(attributes.bounds) - (edgeInsets.left + edgeInsets.right);
-    CGFloat height = CGRectGetHeight(attributes.bounds) - (edgeInsets.top + edgeInsets.bottom);
+    CGFloat width = attributes.size.width - (edgeInsets.left + edgeInsets.right);
+    CGFloat height = attributes.size.height - (edgeInsets.top + edgeInsets.bottom);
     
     frame.origin.x = edgeInsets.left + (edgeInsets.left + width + edgeInsets.right)*index;
     frame.origin.y = edgeInsets.top;
@@ -119,7 +119,7 @@
     
     if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
         JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        CGFloat attributesWidth = CGRectGetWidth(attributes.bounds);
+        CGFloat attributesWidth = attributes.size.width;
         if (attributesWidth > pageWidth)
             pageWidth = attributesWidth;
     }
