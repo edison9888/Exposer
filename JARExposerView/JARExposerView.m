@@ -69,9 +69,10 @@
     CGRect frame = reusableView.frame;
     CGFloat width = attributes.size.width - (edgeInsets.left + edgeInsets.right);
     CGFloat height = attributes.size.height - (edgeInsets.top + edgeInsets.bottom);
+    CGFloat statusBarHeight = 20.f;
     
     frame.origin.x = edgeInsets.left + (edgeInsets.left + width + edgeInsets.right)*index;
-    frame.origin.y = edgeInsets.top;
+    frame.origin.y = (CGRectGetHeight(self.bounds) + statusBarHeight - height)/2 - edgeInsets.top;
     frame.size.width = width;
     frame.size.height = height;
     reusableView.frame = frame;
@@ -119,9 +120,7 @@
     
     if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
         JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        CGFloat attributesWidth = attributes.size.width;
-        if (attributesWidth > pageWidth)
-            pageWidth = attributesWidth;
+        pageWidth = attributes.size.width;
     }
  
     NSUInteger numberOfContentViews = 0;
@@ -129,6 +128,8 @@
         numberOfContentViews = [self.dataSource numberOfContentViews];
     
     CGFloat contentWidth = (numberOfContentViews > 0) ? (numberOfContentViews * pageWidth) : pageWidth;
+    if (contentWidth < CGRectGetWidth(self.bounds))
+        contentWidth = CGRectGetWidth(self.bounds);
     
     self.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(self.bounds));
 }
@@ -157,12 +158,22 @@
     CGRect visibleBounds = self.bounds;
     CGFloat pageWidth = CGRectGetWidth(visibleBounds);
     
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
+        pageWidth = attributes.size.width;
+    }
+    
     NSUInteger numOfContentViews = [self.dataSource numberOfContentViews];
         
     NSInteger firstVisibleIndex = floorf(self.contentOffset.x / pageWidth);
     firstVisibleIndex = MAX(firstVisibleIndex, 0);
     NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + pageWidth) / pageWidth);
-    lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
+    
+    CGFloat totalWidth = numOfContentViews * pageWidth;
+    if (totalWidth <= CGRectGetWidth(self.bounds))
+        lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
+    else
+        lastVisibleIndex = MAX(lastVisibleIndex, numOfContentViews - 1);
     
     NSArray *visibleViews = [_visibleViews copy];
     for (JARExposerContentView *contentView in visibleViews)
