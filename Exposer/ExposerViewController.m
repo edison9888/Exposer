@@ -68,7 +68,7 @@
 {
     JARExposerContentViewAttributes *attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
     attributes.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    attributes.size =  (CGSize){ CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) };
+    attributes.size =  (CGSize){ CGRectGetWidth(self.view.bounds)/3, CGRectGetHeight(self.view.bounds)/3 };
     attributes.alpha = 1.f;
     return attributes;
 }
@@ -106,16 +106,15 @@
 {
     JARExposerContentView *contentView = [exposerView contentViewAtIndex:index];
     
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        contentView.layer.transform = CATransform3DMakeRotation(M_PI_2/3, 0, 0, 1);
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        contentView.layer.transform = CATransform3DMakeScale(2, 2, 2);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-            contentView.layer.transform = CATransform3DMakeRotation(-M_PI_2/3, 0, 0, 1);
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            contentView.layer.transform = CATransform3DMakeScale(1, 1, 1);
         } completion:^(BOOL finished) {
-            contentView.transform = CGAffineTransformMakeRotation(0);
+            contentView.layer.transform = CATransform3DIdentity;
         }];
     }];
-    
     
     NSLog(@"Selected content view %@", contentView);
 }
