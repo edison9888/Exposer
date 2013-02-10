@@ -97,6 +97,7 @@
         contentView.layer.cornerRadius = 15.f;
     }
     
+    contentView.animateSelection = YES;
     contentView.backgroundColor = [UIColor redColor];
     
     return contentView;
@@ -105,17 +106,6 @@
 - (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
 {
     JARExposerContentView *contentView = [exposerView contentViewAtIndex:index];
-    
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        contentView.layer.transform = CATransform3DMakeScale(2, 2, 2);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-            contentView.layer.transform = CATransform3DMakeScale(1, 1, 1);
-        } completion:^(BOOL finished) {
-            contentView.layer.transform = CATransform3DIdentity;
-        }];
-    }];
-    
     NSLog(@"Selected content view %@", contentView);
 }
 

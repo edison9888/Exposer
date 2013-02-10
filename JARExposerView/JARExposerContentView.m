@@ -109,6 +109,52 @@
     
 }
 
+#pragma mark - UIResponder
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+    if (!_animateSelection)
+        return;
+    
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        self.layer.transform = CATransform3DMakeScale(2, 2, 2);
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    
+    if (!_animateSelection)
+        return;
+    
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        self.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    } completion:^(BOOL finished) {
+        self.layer.transform = CATransform3DIdentity;
+    }];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesCancelled:touches withEvent:event];
+    
+    if (!_animateSelection)
+        return;
+    
+    self.layer.transform = CATransform3DIdentity;
+}
+
+#pragma mark - Animation
+
 - (CABasicAnimation *)transformAnimationForKey:(NSString *)key initialTransform:(CATransform3D)initialTransform finalTransform:(CATransform3D)finalTransform
 {
     CABasicAnimation *transformAnimation = (CABasicAnimation *)[self.layer animationForKey:key];
@@ -122,7 +168,6 @@
     }
     return transformAnimation;
 }
-
 
 #pragma mark - CAAnimation delegate
 

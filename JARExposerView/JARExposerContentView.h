@@ -15,6 +15,7 @@
 
 @property (copy, readonly, nonatomic) NSString *reuseIdentifier;
 @property (readonly, nonatomic) NSUInteger index;
+@property (nonatomic) BOOL animateSelection;
 
 - (id)initWithAttributes:(JARExposerContentViewAttributes *)attributes reuseIdentifier:(NSString *)reuseIdentifier;
 
