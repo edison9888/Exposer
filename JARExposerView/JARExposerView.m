@@ -11,7 +11,7 @@
 @interface JARExposerView ()
 
 @property (strong, nonatomic) NSMutableArray *visibleViews;
-@property (strong, nonatomic) NSMutableDictionary *reuseQueues;
+@property (strong, nonatomic) NSCache *reuseQueueCache;
 
 @end
 
@@ -23,7 +23,8 @@
     if (self)
     {
         _visibleViews = [NSMutableArray arrayWithCapacity:0];
-        _reuseQueues = [NSMutableDictionary dictionaryWithCapacity:0];
+        _reuseQueueCache = [[NSCache alloc] init];
+        [_reuseQueueCache setName:@"JARExposerContentViewCache"];
     }
     return self;
 }
@@ -41,7 +42,7 @@
 
 - (JARExposerContentView *)dequeueReusableViewWithIdentifier:(NSString *)reuseIdentifier forIndex:(NSUInteger)index
 {
-    NSMutableArray *reusableViews = _reuseQueues[reuseIdentifier];
+    NSMutableArray *reusableViews = [_reuseQueueCache objectForKey:reuseIdentifier];
     JARExposerContentView *reusableView = [reusableViews lastObject];
 
     JARExposerContentViewAttributes *attributes;
@@ -144,10 +145,10 @@
     [view removeFromSuperview];
     [view prepareForReuse];
     
-    NSMutableArray *reusableViews = _reuseQueues[reuseIdentifier];
+    NSMutableArray *reusableViews = [_reuseQueueCache objectForKey:reuseIdentifier];
     if (reusableViews == nil) {
         reusableViews = [NSMutableArray arrayWithCapacity:0];
-        _reuseQueues[reuseIdentifier] = reusableViews;
+        [_reuseQueueCache setObject:reusableViews forKey:reuseIdentifier];
     }
     
     [reusableViews addObject:view];
