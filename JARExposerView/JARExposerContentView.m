@@ -21,7 +21,7 @@
 
 - (NSUInteger)hash
 {
-    return self.index;
+    return _index;
 }
 
 - (BOOL)isEqual:(id)object
@@ -29,7 +29,7 @@
     if (![object isKindOfClass:[JARExposerContentView class]])
         return NO;
         
-    return ([object index] == self.index);
+    return ([object index] == _index);
 }
 
 #pragma mark - UIView
