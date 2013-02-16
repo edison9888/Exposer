@@ -8,12 +8,6 @@
 
 #import "ExposerViewController.h"
 
-@interface ExposerViewController () 
-
-@property (strong, nonatomic) JARExposerView *presentationView;
-
-@end
-
 @implementation ExposerViewController
 
 - (id)init
@@ -40,6 +34,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self.exposerView scrollToContentViewAtIndex:[self numberOfContentViews]-1 animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -68,7 +64,7 @@
 {
     JARExposerContentViewAttributes *attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
     attributes.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    attributes.size =  (CGSize){ CGRectGetWidth(self.view.bounds)/3, CGRectGetHeight(self.view.bounds)/3 };
+    attributes.size =  (CGSize){ CGRectGetWidth(self.view.bounds)/4, CGRectGetHeight(self.view.bounds)/4 };
     attributes.alpha = 1.f;
     return attributes;
 }
@@ -87,8 +83,15 @@
         
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
         shapeLayer.path = bezierPath.CGPath;
-        shapeLayer.fillColor = [UIColor blueColor].CGColor;
-        shapeLayer.strokeColor = [UIColor yellowColor].CGColor;
+        
+        if (index == [self numberOfContentViews]-1) {
+            shapeLayer.fillColor = [UIColor redColor].CGColor;
+            shapeLayer.strokeColor = [UIColor blueColor].CGColor;
+        } else {
+            shapeLayer.fillColor = [UIColor blueColor].CGColor;
+            shapeLayer.strokeColor = [UIColor yellowColor].CGColor;
+        }
+
         shapeLayer.lineWidth = 10.f;
         
         [contentView.layer addSublayer:shapeLayer];

@@ -109,7 +109,9 @@
 
 - (void)scrollToContentViewAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
+    JARExposerContentView *contentView = [self contentViewAtIndex:index];
     
+    [self scrollRectToVisible:contentView.frame animated:animated];
 }
 
 #pragma mark - Private
