@@ -77,6 +77,34 @@
     [self.exposerView reloadData];
 }
 
+#pragma mark - Presentation
+
+- (void)exposeViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion
+{
+    [self addChildViewController:viewController];
+    
+    CGRect bounds = self.view.bounds;
+    CGPoint center = CGPointMake(CGRectGetWidth(bounds)/2, CGRectGetHeight(bounds)/2);
+
+    viewController.view.center = center;
+    [self.view addSubview:viewController.view];
+    
+    if (animated) {
+        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            viewController.view.bounds = bounds;
+
+        } completion:^(BOOL finished) {
+            if (finished) {
+                if (completion)
+                    completion();
+            }
+        }];
+    } else {
+        if (completion)
+            completion();
+    }
+}
+
 #pragma mark - JARExposerView data source
 
 - (NSUInteger)numberOfContentViews
@@ -97,6 +125,10 @@
 }
 
 #pragma mark - JARExposerView delegate
+
+- (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
+{
+}
 
 - (void)exposerView:(JARExposerView *)exposerView willPresentContentViewAtIndex:(NSUInteger)index
 {

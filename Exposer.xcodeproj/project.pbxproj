@@ -20,6 +20,8 @@
 		014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788516A1BB7100672323 /* Default-568h@2x.png */; };
 		014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D788D16A1BB9000672323 /* ExposerViewController.m */; };
 		017E854616AD3AD7001930E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017E854516AD3AD7001930E2 /* QuartzCore.framework */; };
+		0196B8ED16D1031700380E8E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196B8EB16D1031700380E8E /* ContentViewController.m */; };
+		0196B8EE16D1031700380E8E /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0196B8EC16D1031700380E8E /* ContentViewController.xib */; };
 		01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */; };
 		01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BF216A7E866001C291F /* JARExposerViewController.m */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,9 @@
 		014D788C16A1BB9000672323 /* ExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExposerViewController.h; sourceTree = "<group>"; };
 		014D788D16A1BB9000672323 /* ExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExposerViewController.m; sourceTree = "<group>"; };
 		017E854516AD3AD7001930E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0196B8EA16D1031700380E8E /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		0196B8EB16D1031700380E8E /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		0196B8EC16D1031700380E8E /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		01CE6BCF16A68509001C291F /* JARExposerContentViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerContentViewAttributes.h; path = JARExposerView/JARExposerContentViewAttributes.h; sourceTree = "<group>"; };
 		01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentViewAttributes.m; path = JARExposerView/JARExposerContentViewAttributes.m; sourceTree = "<group>"; };
 		01CE6BF116A7E866001C291F /* JARExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerViewController.h; path = JARExposerView/JARExposerViewController.h; sourceTree = "<group>"; };
@@ -119,6 +124,9 @@
 			children = (
 				014D788C16A1BB9000672323 /* ExposerViewController.h */,
 				014D788D16A1BB9000672323 /* ExposerViewController.m */,
+				0196B8EA16D1031700380E8E /* ContentViewController.h */,
+				0196B8EB16D1031700380E8E /* ContentViewController.m */,
+				0196B8EC16D1031700380E8E /* ContentViewController.xib */,
 				014D787E16A1BB7100672323 /* AppDelegate.h */,
 				014D787F16A1BB7100672323 /* AppDelegate.m */,
 				014D787616A1BB7100672323 /* Supporting Files */,
@@ -195,6 +203,7 @@
 				014D788216A1BB7100672323 /* Default.png in Resources */,
 				014D788416A1BB7100672323 /* Default@2x.png in Resources */,
 				014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */,
+				0196B8EE16D1031700380E8E /* ContentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +221,7 @@
 				011D709016A3E9B3004975DC /* JARExposerContentView.m in Sources */,
 				01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */,
 				01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */,
+				0196B8ED16D1031700380E8E /* ContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

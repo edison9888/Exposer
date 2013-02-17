@@ -8,6 +8,8 @@
 
 #import "ExposerViewController.h"
 
+#import "ContentViewController.h"
+
 @implementation ExposerViewController
 
 - (id)init
@@ -108,8 +110,10 @@
 
 - (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
 {
-    JARExposerContentView *contentView = [exposerView contentViewAtIndex:index];
-    NSLog(@"Selected content view %@", contentView);
+    ContentViewController *viewController = [[ContentViewController alloc] init];
+    [self exposeViewController:viewController animated:YES completion:^{
+        
+    }];
 }
 
 @end
