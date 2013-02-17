@@ -96,4 +96,16 @@
     return nil;
 }
 
+#pragma mark - JARExposerView delegate
+
+- (void)exposerView:(JARExposerView *)exposerView willPresentContentViewAtIndex:(NSUInteger)index
+{
+    
+}
+
+- (void)exposerView:(JARExposerView *)exposerView didPresentContentViewAtIndex:(NSUInteger)index
+{
+    
+}
+
 @end

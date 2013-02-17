@@ -194,18 +194,34 @@
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        if (contentView.index >= [visibleViews count]) {
+        NSUInteger contentIndex = contentView.index;
+        
+        if (contentIndex >= [visibleViews count]) {
             
             if (![_visibleViews containsObject:contentView]) {
                 [_visibleViews addObject:contentView];
+                
+                if ([self.delegate respondsToSelector:@selector(exposerView:willPresentContentViewAtIndex:)])
+                    [self.delegate exposerView:self willPresentContentViewAtIndex:contentIndex];
+                
                 [contentView presentOnView:self animated:animated];
+                
+                if ([self.delegate respondsToSelector:@selector(exposerView:didPresentContentViewAtIndex:)])
+                    [self.delegate exposerView:self didPresentContentViewAtIndex:contentIndex];
             }
             
-        } else if (contentView.index <= firstVisibleIndex) {
+        } else if (contentIndex <= firstVisibleIndex) {
             
             if (![_visibleViews containsObject:contentView]) {
                 [_visibleViews insertObject:contentView atIndex:0];
+                
+                if ([self.delegate respondsToSelector:@selector(exposerView:willPresentContentViewAtIndex:)])
+                    [self.delegate exposerView:self willPresentContentViewAtIndex:contentIndex];
+                
                 [contentView presentOnView:self animated:animated];
+                
+                if ([self.delegate respondsToSelector:@selector(exposerView:didPresentContentViewAtIndex:)])
+                    [self.delegate exposerView:self didPresentContentViewAtIndex:contentIndex];
             }
         }
     }
