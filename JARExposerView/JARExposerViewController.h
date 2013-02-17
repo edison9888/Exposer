@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) JARExposerView *exposerView;
 
+@property (strong, nonatomic) UIViewController *exposedViewController;
 
 - (void)exposeViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion;
 

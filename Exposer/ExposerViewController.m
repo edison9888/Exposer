@@ -111,7 +111,9 @@
 - (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
 {
     ContentViewController *viewController = [[ContentViewController alloc] init];
-    [self exposeViewController:viewController animated:YES completion:^{
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self exposeViewController:navController animated:YES completion:^{
         
     }];
 }

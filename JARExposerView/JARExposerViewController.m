@@ -87,19 +87,52 @@
     CGPoint center = CGPointMake(CGRectGetWidth(bounds)/2, CGRectGetHeight(bounds)/2);
 
     viewController.view.center = center;
+    viewController.view.bounds = bounds;
+    viewController.view.transform = CGAffineTransformMakeScale(0.001, 0.001);
+    
     [self.view addSubview:viewController.view];
     
     if (animated) {
         [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-            viewController.view.bounds = bounds;
-
+            viewController.view.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
             if (finished) {
+                _exposedViewController = viewController;
+                
                 if (completion)
                     completion();
             }
         }];
     } else {
+        _exposedViewController = viewController;
+        
+        if (completion)
+            completion();
+    }
+}
+
+- (void)concealViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
+    UIViewController *childViewController = [self.childViewControllers lastObject];
+    [childViewController removeFromParentViewController];
+    
+    if (animated) {
+        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            childViewController.view.transform = CGAffineTransformMakeScale(0.001, 0.001);
+            
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [childViewController.view removeFromSuperview];
+                _exposedViewController = nil;
+                
+                if (completion)
+                    completion();
+            }
+        }];
+    } else {
+        [childViewController.view removeFromSuperview];
+        _exposedViewController = nil;
+        
         if (completion)
             completion();
     }
@@ -125,10 +158,6 @@
 }
 
 #pragma mark - JARExposerView delegate
-
-- (void)exposerView:(JARExposerView *)exposerView didSelectContentViewAtIndex:(NSUInteger)index
-{
-}
 
 - (void)exposerView:(JARExposerView *)exposerView willPresentContentViewAtIndex:(NSUInteger)index
 {
