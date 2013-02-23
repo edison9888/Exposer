@@ -27,4 +27,7 @@
 
 - (void)scrollToContentViewAtIndex:(NSUInteger)index animated:(BOOL)animated;
 
+// This is used to reset visible views and present all of the content views in a bezier curve type of animation.
+- (void)presentContentViews;
+
 @end

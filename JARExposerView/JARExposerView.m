@@ -115,6 +115,22 @@
     [self scrollRectToVisible:contentView.frame animated:animated];
 }
 
+- (void)presentContentViews
+{
+    NSUInteger numberOfContentViews = 0;
+    if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
+        numberOfContentViews = [self.dataSource numberOfContentViews];
+    
+    for (NSInteger contentViewIndex = 0; contentViewIndex < numberOfContentViews; ++contentViewIndex)
+    {
+        JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
+        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        // TODO:
+        // Do the content view presentation here.
+    }
+}
+
 #pragma mark - Private
 
 - (void)updateContentSize
@@ -159,20 +175,20 @@
     [self updateContentSize];
     
     CGRect visibleBounds = self.bounds;
-    CGFloat pageWidth = CGRectGetWidth(visibleBounds);
+    CGFloat contentWidth = CGRectGetWidth(visibleBounds);
     
     if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
         JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        pageWidth = attributes.size.width;
+        contentWidth = attributes.size.width;
     }
     
     NSUInteger numOfContentViews = [self.dataSource numberOfContentViews];
         
-    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / pageWidth);
+    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / contentWidth);
     firstVisibleIndex = MAX(firstVisibleIndex, 0);
-    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + pageWidth) / pageWidth);
+    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + contentWidth) / contentWidth);
     
-    CGFloat totalWidth = numOfContentViews * pageWidth;
+    CGFloat totalWidth = numOfContentViews * contentWidth;
     if (totalWidth <= CGRectGetWidth(self.bounds))
         lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
     else
@@ -189,9 +205,9 @@
     
     visibleViews = [_visibleViews copy];
     
-    for (NSInteger pageIndex = firstVisibleIndex; pageIndex <= lastVisibleIndex; ++pageIndex)
+    for (NSInteger contentViewIndex = firstVisibleIndex; contentViewIndex <= lastVisibleIndex; ++contentViewIndex)
     {
-        JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:pageIndex];
+        JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         NSUInteger contentIndex = contentView.index;
