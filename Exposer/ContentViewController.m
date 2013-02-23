@@ -7,6 +7,7 @@
 //
 
 #import "ContentViewController.h"
+#import "JARExposerViewController.h"
 
 @interface ContentViewController ()
 
@@ -64,6 +65,15 @@
 
 - (void)close:(id)sender
 {
+    UIViewController *parentViewController;
+    
+    if (self.navigationController != nil)
+        parentViewController = [self.navigationController parentViewController];
+    else
+        parentViewController = self.parentViewController;
+    
+    if ([parentViewController respondsToSelector:@selector(concealViewControllerAnimated:completion:)])
+        [(JARExposerViewController *)parentViewController concealViewControllerAnimated:YES completion:^{ }];
 }
 
 @end

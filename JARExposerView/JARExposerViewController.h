@@ -10,12 +10,17 @@
 
 #import "JARExposerView.h"
 
-@interface JARExposerViewController : UIViewController <JARExposerViewDataSource, JARExposerViewDelegate>
+@protocol JARViewControllerPresentation 
+
+- (void)exposeViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion;
+- (void)concealViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completion;
+
+@end
+
+@interface JARExposerViewController : UIViewController <JARExposerViewDataSource, JARExposerViewDelegate, JARViewControllerPresentation>
 
 @property (strong, nonatomic) JARExposerView *exposerView;
 
 @property (strong, nonatomic) UIViewController *exposedViewController;
-
-- (void)exposeViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion;
 
 @end

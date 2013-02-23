@@ -113,9 +113,7 @@
     ContentViewController *viewController = [[ContentViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [self exposeViewController:navController animated:YES completion:^{
-        
-    }];
+    [self exposeViewController:navController animated:YES completion:^{ }];
 }
 
 @end

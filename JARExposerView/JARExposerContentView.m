@@ -120,8 +120,7 @@
     
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
         self.layer.transform = CATransform3DMakeScale(2, 2, 2);
-    } completion:^(BOOL finished) {
-    }];
+    } completion:^(BOOL finished) { }];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
