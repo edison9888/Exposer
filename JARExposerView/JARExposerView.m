@@ -157,18 +157,18 @@
 
 - (void)updateContentSize
 {
-    CGFloat pageWidth = CGRectGetWidth(self.bounds);
+    CGFloat contentViewWidth = CGRectGetWidth(self.bounds);
     
     if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
         JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        pageWidth = attributes.size.width;
+        contentViewWidth = attributes.size.width;
     }
  
     NSUInteger numberOfContentViews = 0;
     if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
         numberOfContentViews = [self.dataSource numberOfContentViews];
     
-    CGFloat contentWidth = (numberOfContentViews > 0) ? (numberOfContentViews * pageWidth) : pageWidth;
+    CGFloat contentWidth = (numberOfContentViews > 0) ? (numberOfContentViews * contentViewWidth) : contentViewWidth;
     if (contentWidth < CGRectGetWidth(self.bounds))
         contentWidth = CGRectGetWidth(self.bounds);
     
@@ -197,20 +197,20 @@
     [self updateContentSize];
     
     CGRect visibleBounds = self.bounds;
-    CGFloat contentWidth = CGRectGetWidth(visibleBounds);
+    CGFloat contentViewWidth = CGRectGetWidth(visibleBounds);
     
     if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
         JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        contentWidth = attributes.size.width;
+        contentViewWidth = attributes.size.width;
     }
     
     NSUInteger numOfContentViews = [self.dataSource numberOfContentViews];
         
-    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / contentWidth);
+    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / contentViewWidth);
     firstVisibleIndex = MAX(firstVisibleIndex, 0);
-    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + contentWidth) / contentWidth);
+    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + contentViewWidth) / contentViewWidth);
     
-    CGFloat totalWidth = numOfContentViews * contentWidth;
+    CGFloat totalWidth = numOfContentViews * contentViewWidth;
     if (totalWidth <= CGRectGetWidth(self.bounds))
         lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
     else
@@ -232,34 +232,32 @@
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        NSUInteger contentIndex = contentView.index;
-        
-        if (contentIndex >= [visibleViews count]) {
+        if (contentViewIndex >= [visibleViews count]) {
             
             if (![_visibleViews containsObject:contentView]) {
                 [_visibleViews addObject:contentView];
                 
                 if ([self.delegate respondsToSelector:@selector(exposerView:willPresentContentViewAtIndex:)])
-                    [self.delegate exposerView:self willPresentContentViewAtIndex:contentIndex];
+                    [self.delegate exposerView:self willPresentContentViewAtIndex:contentViewIndex];
                 
                 [contentView presentOnView:self animated:animated];
                 
                 if ([self.delegate respondsToSelector:@selector(exposerView:didPresentContentViewAtIndex:)])
-                    [self.delegate exposerView:self didPresentContentViewAtIndex:contentIndex];
+                    [self.delegate exposerView:self didPresentContentViewAtIndex:contentViewIndex];
             }
             
-        } else if (contentIndex <= firstVisibleIndex) {
+        } else if (contentViewIndex <= firstVisibleIndex) {
             
             if (![_visibleViews containsObject:contentView]) {
                 [_visibleViews insertObject:contentView atIndex:0];
                 
                 if ([self.delegate respondsToSelector:@selector(exposerView:willPresentContentViewAtIndex:)])
-                    [self.delegate exposerView:self willPresentContentViewAtIndex:contentIndex];
+                    [self.delegate exposerView:self willPresentContentViewAtIndex:contentViewIndex];
                 
                 [contentView presentOnView:self animated:animated];
                 
                 if ([self.delegate respondsToSelector:@selector(exposerView:didPresentContentViewAtIndex:)])
-                    [self.delegate exposerView:self didPresentContentViewAtIndex:contentIndex];
+                    [self.delegate exposerView:self didPresentContentViewAtIndex:contentViewIndex];
             }
         }
     }
