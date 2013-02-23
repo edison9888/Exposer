@@ -146,11 +146,22 @@
         
         // TODO:
         // Do the content view presentation here.
+        
+        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.8, CGRectGetHeight(self.bounds))];
+        CAKeyframeAnimation *keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        keyframeAnimation.path = path.CGPath;
+        keyframeAnimation.duration = 0.2 * contentViewIndex;
+        keyframeAnimation.delegate = self;
+        
+        NSString *animationKey = [NSString stringWithFormat:@"ExposerPresentationAnimation-%d", contentViewIndex];
+        if (contentViewIndex == numberOfContentViews-1)
+            animationKey = @"LastContentViewAnimation";
+        
+        [keyframeAnimation setValue:animationKey forKey:@"animationKey"];
+        [contentView.layer addAnimation:keyframeAnimation forKey:animationKey];
+        
+        [self addSubview:contentView];
     }
-    
-    [self reloadData];
-    
-    _presentingContent = NO;
 }
 
 #pragma mark - Private
@@ -306,6 +317,25 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesCancelled:touches withEvent:event];
+}
+
+#pragma mark - CAAnimation delegates
+
+- (void)animationDidStart:(CAAnimation *)anim
+{
+    
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)finished
+{
+    if (finished) {
+        NSString *animationKey = [anim valueForKey:@"animationKey"];
+        if ([animationKey isEqualToString:@"LastContentViewAnimation"]) {
+            _presentingContent = NO;
+            
+            [self reloadData];
+        }
+    }
 }
 
 @end
