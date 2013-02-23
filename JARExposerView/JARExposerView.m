@@ -115,8 +115,15 @@
     [self scrollRectToVisible:contentView.frame animated:animated];
 }
 
-- (void)presentContentViews
+- (void)presentContentViewsOnCompletion:(void (^)(void))completion
 {
+    [_visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[UIView class]])
+            [obj removeFromSuperview];
+    }];
+    
+    [_visibleViews removeAllObjects];
+    
     NSUInteger numberOfContentViews = 0;
     if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
         numberOfContentViews = [self.dataSource numberOfContentViews];
@@ -129,6 +136,11 @@
         // TODO:
         // Do the content view presentation here.
     }
+    
+    [self reloadData];
+    
+    if (completion)
+        completion();
 }
 
 #pragma mark - Private

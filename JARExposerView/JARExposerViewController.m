@@ -48,6 +48,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [_exposerView presentContentViewsOnCompletion:^{ }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
