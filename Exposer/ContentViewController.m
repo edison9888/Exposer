@@ -65,14 +65,11 @@
 
 - (void)close:(id)sender
 {
-    UIViewController *parentViewController;
+    UIViewController *parentViewController = self.parentViewController;
+    while (parentViewController != nil && ![parentViewController respondsToSelector:@selector(concealViewControllerAnimated:completion:)])
+        parentViewController = parentViewController.parentViewController;
     
-    if (self.navigationController != nil)
-        parentViewController = [self.navigationController parentViewController];
-    else
-        parentViewController = self.parentViewController;
-    
-    if ([parentViewController respondsToSelector:@selector(concealViewControllerAnimated:completion:)])
+    if (parentViewController != nil && [parentViewController respondsToSelector:@selector(concealViewControllerAnimated:completion:)])
         [(JARExposerViewController *)parentViewController concealViewControllerAnimated:YES completion:^{ }];
 }
 
