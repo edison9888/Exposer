@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSMutableArray *visibleViews;
 @property (strong, nonatomic) NSCache *reuseQueueCache;
 
+@property (nonatomic) BOOL presentingContent;
+
 @end
 
 @implementation JARExposerView
@@ -35,7 +37,16 @@
 {
     [super layoutSubviews];
     
-    [self updateVisibleViewsAnimated:YES];
+    if (!_presentingContent)
+        [self updateVisibleViewsAnimated:YES];
+    else
+        [self presentContentViews];
+}
+
+- (void)didMoveToSuperview
+{
+    if (_animatesPresentation)
+        _presentingContent = YES;
 }
 
 #pragma mark - Public
@@ -115,7 +126,7 @@
     [self scrollRectToVisible:contentView.frame animated:animated];
 }
 
-- (void)presentContentViewsOnCompletion:(void (^)(void))completion
+- (void)presentContentViews
 {
     [_visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIView class]])
@@ -139,8 +150,7 @@
     
     [self reloadData];
     
-    if (completion)
-        completion();
+    _presentingContent = NO;
 }
 
 #pragma mark - Private

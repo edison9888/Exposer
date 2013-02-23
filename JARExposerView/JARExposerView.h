@@ -17,6 +17,8 @@
 
 @interface JARExposerView : UIScrollView
 
+@property (nonatomic) BOOL animatesPresentation;
+
 @property (weak, nonatomic) id <JARExposerViewDelegate> delegate;
 @property (weak, nonatomic) id <JARExposerViewDataSource> dataSource;
 
@@ -26,8 +28,5 @@
 - (void)reloadData;
 
 - (void)scrollToContentViewAtIndex:(NSUInteger)index animated:(BOOL)animated;
-
-// This is used to reset visible views and present all of the content views in a bezier curve type of animation.
-- (void)presentContentViewsOnCompletion:(void (^)(void))completion;
 
 @end

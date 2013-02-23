@@ -36,6 +36,7 @@
     exposerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     exposerView.dataSource = self;
     exposerView.delegate = self;
+    exposerView.animatesPresentation = YES;
     _exposerView = exposerView;
     [self.view addSubview:_exposerView];
 }
@@ -48,8 +49,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [_exposerView presentContentViewsOnCompletion:^{ }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
