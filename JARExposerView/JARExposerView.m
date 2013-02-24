@@ -139,18 +139,31 @@
     if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
         numberOfContentViews = [self.dataSource numberOfContentViews];
     
+    CGFloat contentViewWidth = 0.f;
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
+        contentViewWidth = attributes.size.width;
+    }
+    
     for (NSInteger contentViewIndex = 0; contentViewIndex < numberOfContentViews; ++contentViewIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
+        UIBezierPath *presentationPath = [UIBezierPath bezierPath];
+        CGPoint startPoint = { CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds) + 2*CGRectGetHeight(contentView.frame) };
+        [presentationPath moveToPoint:startPoint];
+        
+        CGPoint endPoint = { contentViewWidth/2 + (numberOfContentViews * contentViewWidth), CGRectGetMidY(contentView.frame) };
+        [presentationPath addQuadCurveToPoint:endPoint controlPoint:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMinY(self.bounds))];
+        
         // TODO:
         // Do the content view presentation here.
         
-        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.8, CGRectGetHeight(self.bounds))];
         CAKeyframeAnimation *keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-        keyframeAnimation.path = path.CGPath;
+        keyframeAnimation.path = presentationPath.CGPath;
         keyframeAnimation.duration = 0.2 * contentViewIndex;
+        keyframeAnimation.calculationMode = kCAAnimationCubicPaced;
         keyframeAnimation.delegate = self;
         
         NSString *animationKey = [NSString stringWithFormat:@"ExposerPresentationAnimation-%d", contentViewIndex];
