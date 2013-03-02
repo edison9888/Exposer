@@ -80,6 +80,8 @@
 
 - (void)presentOnView:(UIView *)containerView animated:(BOOL)animated
 {
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
     for (id subview in containerView.subviews) {
         if ([subview isKindOfClass:[self class]]) {
             JARExposerContentView *contentView = subview;

@@ -126,6 +126,63 @@
     [self scrollRectToVisible:contentView.frame animated:animated];
 }
 
+- (void)exposeContentView:(JARExposerContentView *)contentView
+{
+    NSInteger contentViewIndex = contentView.index;
+    
+    NSUInteger numberOfContentViews = 0;
+    if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
+        numberOfContentViews = [self.dataSource numberOfContentViews];
+    
+    CGFloat contentViewWidth = 0.f;
+    CGFloat contentViewHeight = 0.f;
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
+        contentViewWidth = attributes.size.width;
+        contentViewHeight = attributes.size.height;
+    }
+    
+    CGPoint endPosition = contentView.layer.position;
+    
+    UIBezierPath *presentationPath = [UIBezierPath bezierPath];
+    CGPoint startPoint = { CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds) + contentViewHeight };
+    [presentationPath moveToPoint:startPoint];
+    
+    CGPoint firstEndPoint = { -(numberOfContentViews * contentViewWidth), endPosition.y };
+    [presentationPath addQuadCurveToPoint:firstEndPoint controlPoint:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMinY(self.bounds) + contentViewHeight)];
+    
+    [presentationPath addLineToPoint:endPosition];
+        
+    CAKeyframeAnimation *keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    keyframeAnimation.path = presentationPath.CGPath;
+    keyframeAnimation.duration = 1.0 + 1.0 / (contentViewIndex + 1);
+    keyframeAnimation.calculationMode = kCAAnimationCubicPaced;
+    keyframeAnimation.delegate = self;
+        
+    CABasicAnimation *scalingAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    scalingAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.4, 0.4, 0.4)];
+    scalingAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    scalingAnimation.delegate = self;
+    
+    NSString *animationKey = [NSString stringWithFormat:@"ExposerPresentationAnimation-%d", contentViewIndex];
+    if (contentViewIndex == numberOfContentViews-1)
+        animationKey = @"LastContentViewAnimation";
+    
+    CAAnimationGroup *groupAnimation = (CAAnimationGroup *)[self.layer animationForKey:animationKey];
+    if (groupAnimation == nil) {
+        groupAnimation = [CAAnimationGroup animation];
+        groupAnimation.animations = @[keyframeAnimation, scalingAnimation];
+        groupAnimation.duration = 1.0 + 1.0 / (contentViewIndex + 1);
+        groupAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        groupAnimation.delegate = self;        
+        [groupAnimation setValue:animationKey forKey:@"animationKey"];
+        
+        [contentView.layer addAnimation:groupAnimation forKey:animationKey];
+    }
+    
+    [self addSubview:contentView];
+}
+
 - (void)presentContentViews
 {
     [_visibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -137,46 +194,14 @@
     
     NSUInteger numberOfContentViews = 0;
     if ([self.dataSource respondsToSelector:@selector(numberOfContentViews)])
-        numberOfContentViews = [self.dataSource numberOfContentViews];
-    
-    CGFloat contentViewWidth = 0.f;
-    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
-        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        contentViewWidth = attributes.size.width;
-    }
+        numberOfContentViews = [self.dataSource numberOfContentViews];    
     
     // Animate the content views from the last to the first. 
     
     for (NSInteger contentViewIndex = numberOfContentViews-1; contentViewIndex >= 0; contentViewIndex--)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
-        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        
-        CGPoint endPosition = contentView.layer.position;
-        
-        UIBezierPath *presentationPath = [UIBezierPath bezierPath];
-        CGPoint startPoint = { CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds) + 2*CGRectGetHeight(contentView.frame) };
-        [presentationPath moveToPoint:startPoint];
-        
-        CGPoint firstEndPoint = { -(contentViewWidth/2 + (numberOfContentViews * contentViewWidth)), endPosition.y };
-        [presentationPath addQuadCurveToPoint:firstEndPoint controlPoint:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMinY(self.bounds))];
-        
-        [presentationPath addLineToPoint:endPosition];
-        
-        CAKeyframeAnimation *keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-        keyframeAnimation.path = presentationPath.CGPath;
-        keyframeAnimation.duration = 2.0;
-        keyframeAnimation.calculationMode = kCAAnimationCubicPaced;
-        keyframeAnimation.delegate = self;
-        
-        NSString *animationKey = [NSString stringWithFormat:@"ExposerPresentationAnimation-%d", contentViewIndex];
-        if (contentViewIndex == numberOfContentViews-1)
-            animationKey = @"LastContentViewAnimation";
-        
-        [keyframeAnimation setValue:animationKey forKey:@"animationKey"];
-        [contentView.layer addAnimation:keyframeAnimation forKey:animationKey];
-        
-        [self addSubview:contentView];
+        [self exposeContentView:contentView];
     }
 }
 
@@ -278,7 +303,6 @@
     for (NSInteger contentViewIndex = firstVisibleIndex; contentViewIndex <= lastVisibleIndex; ++contentViewIndex)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
-        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         if (contentViewIndex >= [visibleViews count]) {
             
