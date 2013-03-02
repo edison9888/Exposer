@@ -66,7 +66,15 @@
 {
     JARExposerContentViewAttributes *attributes = [JARExposerContentViewAttributes contentViewAttributesForIndex:index];
     attributes.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    attributes.size =  (CGSize){ CGRectGetWidth(self.view.bounds)/4, CGRectGetHeight(self.view.bounds)/4 };
+    CGFloat contentWidth = CGRectGetWidth(self.view.bounds)/4;
+    CGFloat contentHeight = CGRectGetHeight(self.view.bounds)/4;
+    
+    // Maintain portrait size
+    if (contentWidth > contentHeight)
+        attributes.size = (CGSize){ contentHeight, contentWidth };
+    else
+        attributes.size = (CGSize){ contentWidth, contentHeight };
+    
     attributes.alpha = 1.f;
     return attributes;
 }
