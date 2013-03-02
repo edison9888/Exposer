@@ -80,8 +80,13 @@
 
 - (void)presentOnView:(UIView *)containerView animated:(BOOL)animated
 {
-    if ([self isDescendantOfView:containerView])
-        return;
+    for (id subview in containerView.subviews) {
+        if ([subview isKindOfClass:[self class]]) {
+            JARExposerContentView *contentView = subview;
+            if (contentView.index == self.index)
+                [contentView removeFromSuperview];
+        }
+    }
     
     if (animated) {
         CATransform3D initialTransform = CATransform3DMakeScale(0.01, 0.01, 0.01);

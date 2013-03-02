@@ -145,24 +145,27 @@
         contentViewWidth = attributes.size.width;
     }
     
-    for (NSInteger contentViewIndex = 0; contentViewIndex < numberOfContentViews; ++contentViewIndex)
+    // Animate the content views from the last to the first. 
+    
+    for (NSInteger contentViewIndex = numberOfContentViews-1; contentViewIndex >= 0; contentViewIndex--)
     {
         JARExposerContentView *contentView = [self.dataSource exposerView:self contentViewAtIndex:contentViewIndex];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        CGPoint endPosition = contentView.layer.position;
         
         UIBezierPath *presentationPath = [UIBezierPath bezierPath];
         CGPoint startPoint = { CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds) + 2*CGRectGetHeight(contentView.frame) };
         [presentationPath moveToPoint:startPoint];
         
-        CGPoint endPoint = { contentViewWidth/2 + (numberOfContentViews * contentViewWidth), CGRectGetMidY(contentView.frame) };
-        [presentationPath addQuadCurveToPoint:endPoint controlPoint:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMinY(self.bounds))];
+        CGPoint firstEndPoint = { -(contentViewWidth/2 + (numberOfContentViews * contentViewWidth)), endPosition.y };
+        [presentationPath addQuadCurveToPoint:firstEndPoint controlPoint:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMinY(self.bounds))];
         
-        // TODO:
-        // Do the content view presentation here.
+        [presentationPath addLineToPoint:endPosition];
         
         CAKeyframeAnimation *keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         keyframeAnimation.path = presentationPath.CGPath;
-        keyframeAnimation.duration = 0.2 * contentViewIndex;
+        keyframeAnimation.duration = 2.0;
         keyframeAnimation.calculationMode = kCAAnimationCubicPaced;
         keyframeAnimation.delegate = self;
         
@@ -178,6 +181,44 @@
 }
 
 #pragma mark - Private
+
+- (NSInteger)firstVisibleIndex
+{
+    CGRect visibleBounds = self.bounds;
+    CGFloat contentViewWidth = CGRectGetWidth(visibleBounds);
+    
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
+        contentViewWidth = attributes.size.width;
+    }
+    
+    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / contentViewWidth);
+    firstVisibleIndex = MAX(firstVisibleIndex, 0);
+    return firstVisibleIndex;
+}
+
+- (NSInteger)lastVisibleIndex
+{
+    CGRect visibleBounds = self.bounds;
+    CGFloat contentViewWidth = CGRectGetWidth(visibleBounds);
+    
+    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
+        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
+        contentViewWidth = attributes.size.width;
+    }
+    
+    NSUInteger numOfContentViews = [self.dataSource numberOfContentViews];
+    
+    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + contentViewWidth) / contentViewWidth);
+    
+    CGFloat totalWidth = numOfContentViews * contentViewWidth;
+    if (totalWidth <= CGRectGetWidth(self.bounds))
+        lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
+    else
+        lastVisibleIndex = MAX(lastVisibleIndex, numOfContentViews - 1);
+    
+    return lastVisibleIndex;
+}
 
 - (void)updateContentSize
 {
@@ -220,26 +261,9 @@
 {
     [self updateContentSize];
     
-    CGRect visibleBounds = self.bounds;
-    CGFloat contentViewWidth = CGRectGetWidth(visibleBounds);
-    
-    if ([self.dataSource respondsToSelector:@selector(contentViewAttributesAtIndex:)]) {
-        JARExposerContentViewAttributes *attributes = [self.dataSource contentViewAttributesAtIndex:0];
-        contentViewWidth = attributes.size.width;
-    }
-    
-    NSUInteger numOfContentViews = [self.dataSource numberOfContentViews];
+    NSInteger firstVisibleIndex = [self firstVisibleIndex];
+    NSInteger lastVisibleIndex = [self lastVisibleIndex];
         
-    NSInteger firstVisibleIndex = floorf(self.contentOffset.x / contentViewWidth);
-    firstVisibleIndex = MAX(firstVisibleIndex, 0);
-    NSInteger lastVisibleIndex = ceilf((self.contentOffset.x + contentViewWidth) / contentViewWidth);
-    
-    CGFloat totalWidth = numOfContentViews * contentViewWidth;
-    if (totalWidth <= CGRectGetWidth(self.bounds))
-        lastVisibleIndex = MIN(lastVisibleIndex, numOfContentViews - 1);
-    else
-        lastVisibleIndex = MAX(lastVisibleIndex, numOfContentViews - 1);
-    
     NSArray *visibleViews = [_visibleViews copy];
     for (JARExposerContentView *contentView in visibleViews)
     {
@@ -344,9 +368,7 @@
     if (finished) {
         NSString *animationKey = [anim valueForKey:@"animationKey"];
         if ([animationKey isEqualToString:@"LastContentViewAnimation"]) {
-            _presentingContent = NO;
-            
-            [self reloadData];
+            _presentingContent = NO;            
         }
     }
 }
