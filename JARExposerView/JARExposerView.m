@@ -38,7 +38,7 @@
     [super layoutSubviews];
     
     if (!_presentingContent)
-        [self updateVisibleViewsAnimated:YES];
+        [self updateVisibleViews];
     else
         [self presentContentViews];
 }
@@ -257,7 +257,7 @@
     [reusableViews addObject:view];
 }
 
-- (void)updateVisibleViewsAnimated:(BOOL)animated
+- (void)updateVisibleViews
 {
     [self updateContentSize];
     
@@ -288,7 +288,7 @@
                 if ([self.delegate respondsToSelector:@selector(exposerView:willPresentContentViewAtIndex:)])
                     [self.delegate exposerView:self willPresentContentViewAtIndex:contentViewIndex];
                 
-                [contentView presentOnView:self animated:animated];
+                [contentView presentOnView:self animated:contentView.animatesPresentation];
                 
                 if ([self.delegate respondsToSelector:@selector(exposerView:didPresentContentViewAtIndex:)])
                     [self.delegate exposerView:self didPresentContentViewAtIndex:contentViewIndex];
@@ -302,7 +302,7 @@
                 if ([self.delegate respondsToSelector:@selector(exposerView:willPresentContentViewAtIndex:)])
                     [self.delegate exposerView:self willPresentContentViewAtIndex:contentViewIndex];
                 
-                [contentView presentOnView:self animated:animated];
+                [contentView presentOnView:self animated:contentView.animatesPresentation];
                 
                 if ([self.delegate respondsToSelector:@selector(exposerView:didPresentContentViewAtIndex:)])
                     [self.delegate exposerView:self didPresentContentViewAtIndex:contentViewIndex];

@@ -102,7 +102,8 @@
         contentView.layer.cornerRadius = 15.f;
     }
     
-    contentView.animateSelection = YES;
+    contentView.animatesSelection = YES;
+    contentView.animatesPresentation = YES;
     contentView.backgroundColor = [UIColor redColor];
     
     return contentView;

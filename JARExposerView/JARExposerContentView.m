@@ -120,7 +120,7 @@
 {
     [super touchesBegan:touches withEvent:event];
     
-    if (!_animateSelection)
+    if (!_animatesSelection)
         return;
     
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
@@ -137,7 +137,7 @@
 {
     [super touchesEnded:touches withEvent:event];
     
-    if (!_animateSelection)
+    if (!_animatesSelection)
         return;
     
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
@@ -151,7 +151,7 @@
 {
     [super touchesCancelled:touches withEvent:event];
     
-    if (!_animateSelection)
+    if (!_animatesSelection)
         return;
     
     self.layer.transform = CATransform3DIdentity;
