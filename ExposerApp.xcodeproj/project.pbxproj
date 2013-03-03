@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		011D708916A3E5CA004975DC /* JARExposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011D708816A3E5CA004975DC /* JARExposerView.m */; };
 		011D709016A3E9B3004975DC /* JARExposerContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011D708F16A3E9B3004975DC /* JARExposerContentView.m */; };
+		013D66AE16E342C0009F60E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66A816E342C0009F60E3 /* AppDelegate.m */; };
+		013D66AF16E342C0009F60E3 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66AA16E342C0009F60E3 /* ContentViewController.m */; };
+		013D66B016E342C0009F60E3 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013D66AB16E342C0009F60E3 /* ContentViewController.xib */; };
+		013D66B116E342C0009F60E3 /* ExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66AD16E342C0009F60E3 /* ExposerViewController.m */; };
+		013D66B816E342EF009F60E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013D66B216E342EF009F60E3 /* Default-568h@2x.png */; };
+		013D66B916E342EF009F60E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 013D66B316E342EF009F60E3 /* Default.png */; };
+		013D66BA16E342EF009F60E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013D66B416E342EF009F60E3 /* Default@2x.png */; };
+		013D66BC16E342EF009F60E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66B716E342EF009F60E3 /* main.m */; };
+		013D66BF16E3432F009F60E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 013D66BD16E3432F009F60E3 /* InfoPlist.strings */; };
 		014D787016A1BB7100672323 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014D786F16A1BB7100672323 /* UIKit.framework */; };
 		014D787216A1BB7100672323 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014D787116A1BB7100672323 /* Foundation.framework */; };
 		014D787416A1BB7100672323 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014D787316A1BB7100672323 /* CoreGraphics.framework */; };
-		014D787A16A1BB7100672323 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 014D787816A1BB7100672323 /* InfoPlist.strings */; };
-		014D787C16A1BB7100672323 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D787B16A1BB7100672323 /* main.m */; };
-		014D788016A1BB7100672323 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D787F16A1BB7100672323 /* AppDelegate.m */; };
-		014D788216A1BB7100672323 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788116A1BB7100672323 /* Default.png */; };
-		014D788416A1BB7100672323 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788316A1BB7100672323 /* Default@2x.png */; };
-		014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 014D788516A1BB7100672323 /* Default-568h@2x.png */; };
-		014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014D788D16A1BB9000672323 /* ExposerViewController.m */; };
 		017E854616AD3AD7001930E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017E854516AD3AD7001930E2 /* QuartzCore.framework */; };
-		0196B8ED16D1031700380E8E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196B8EB16D1031700380E8E /* ContentViewController.m */; };
-		0196B8EE16D1031700380E8E /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0196B8EC16D1031700380E8E /* ContentViewController.xib */; };
 		01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */; };
 		01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BF216A7E866001C291F /* JARExposerViewController.m */; };
 /* End PBXBuildFile section */
@@ -33,25 +33,26 @@
 		011D708F16A3E9B3004975DC /* JARExposerContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentView.m; path = JARExposerView/JARExposerContentView.m; sourceTree = "<group>"; };
 		011D709A16A41255004975DC /* JARExposerViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JARExposerViewDataSource.h; path = JARExposerView/JARExposerViewDataSource.h; sourceTree = "<group>"; };
 		011D709B16A4126A004975DC /* JARExposerViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JARExposerViewDelegate.h; path = JARExposerView/JARExposerViewDelegate.h; sourceTree = "<group>"; };
-		014D786B16A1BB7100672323 /* Exposer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exposer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		013D66A716E342C0009F60E3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ExposerApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		013D66A816E342C0009F60E3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ExposerApp/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		013D66A916E342C0009F60E3 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentViewController.h; path = ExposerApp/ContentViewController.h; sourceTree = SOURCE_ROOT; };
+		013D66AA16E342C0009F60E3 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentViewController.m; path = ExposerApp/ContentViewController.m; sourceTree = SOURCE_ROOT; };
+		013D66AB16E342C0009F60E3 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContentViewController.xib; path = ExposerApp/ContentViewController.xib; sourceTree = SOURCE_ROOT; };
+		013D66AC16E342C0009F60E3 /* ExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExposerViewController.h; path = ExposerApp/ExposerViewController.h; sourceTree = SOURCE_ROOT; };
+		013D66AD16E342C0009F60E3 /* ExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExposerViewController.m; path = ExposerApp/ExposerViewController.m; sourceTree = SOURCE_ROOT; };
+		013D66B216E342EF009F60E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "ExposerApp/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		013D66B316E342EF009F60E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ExposerApp/Default.png; sourceTree = SOURCE_ROOT; };
+		013D66B416E342EF009F60E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "ExposerApp/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		013D66B516E342EF009F60E3 /* ExposerApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ExposerApp-Info.plist"; path = "ExposerApp/ExposerApp-Info.plist"; sourceTree = SOURCE_ROOT; };
+		013D66B616E342EF009F60E3 /* ExposerApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ExposerApp-Prefix.pch"; path = "ExposerApp/ExposerApp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		013D66B716E342EF009F60E3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExposerApp/main.m; sourceTree = SOURCE_ROOT; };
+		013D66BE16E3432F009F60E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ExposerApp/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		013D66C116E343FA009F60E3 /* Exposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exposer.h; sourceTree = "<group>"; };
+		014D786B16A1BB7100672323 /* ExposerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		014D786F16A1BB7100672323 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		014D787116A1BB7100672323 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		014D787316A1BB7100672323 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		014D787716A1BB7100672323 /* Exposer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exposer-Info.plist"; sourceTree = "<group>"; };
-		014D787916A1BB7100672323 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		014D787B16A1BB7100672323 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		014D787D16A1BB7100672323 /* Exposer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Exposer-Prefix.pch"; sourceTree = "<group>"; };
-		014D787E16A1BB7100672323 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		014D787F16A1BB7100672323 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		014D788116A1BB7100672323 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		014D788316A1BB7100672323 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		014D788516A1BB7100672323 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		014D788C16A1BB9000672323 /* ExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExposerViewController.h; sourceTree = "<group>"; };
-		014D788D16A1BB9000672323 /* ExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExposerViewController.m; sourceTree = "<group>"; };
 		017E854516AD3AD7001930E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0196B8EA16D1031700380E8E /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
-		0196B8EB16D1031700380E8E /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
-		0196B8EC16D1031700380E8E /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		01CE6BCF16A68509001C291F /* JARExposerContentViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerContentViewAttributes.h; path = JARExposerView/JARExposerContentViewAttributes.h; sourceTree = "<group>"; };
 		01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentViewAttributes.m; path = JARExposerView/JARExposerContentViewAttributes.m; sourceTree = "<group>"; };
 		01CE6BF116A7E866001C291F /* JARExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerViewController.h; path = JARExposerView/JARExposerViewController.h; sourceTree = "<group>"; };
@@ -90,11 +91,20 @@
 			name = JARExposerView;
 			sourceTree = "<group>";
 		};
+		013D66C016E343DE009F60E3 /* Exposer */ = {
+			isa = PBXGroup;
+			children = (
+				013D66C116E343FA009F60E3 /* Exposer.h */,
+			);
+			path = Exposer;
+			sourceTree = "<group>";
+		};
 		014D786016A1BB7100672323 = {
 			isa = PBXGroup;
 			children = (
+				013D66C016E343DE009F60E3 /* Exposer */,
 				011D708516A3E54F004975DC /* JARExposerView */,
-				014D787516A1BB7100672323 /* Exposer */,
+				014D787516A1BB7100672323 /* ExposerApp */,
 				014D786E16A1BB7100672323 /* Frameworks */,
 				014D786C16A1BB7100672323 /* Products */,
 			);
@@ -103,7 +113,7 @@
 		014D786C16A1BB7100672323 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				014D786B16A1BB7100672323 /* Exposer.app */,
+				014D786B16A1BB7100672323 /* ExposerApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,31 +129,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		014D787516A1BB7100672323 /* Exposer */ = {
+		014D787516A1BB7100672323 /* ExposerApp */ = {
 			isa = PBXGroup;
 			children = (
-				014D788C16A1BB9000672323 /* ExposerViewController.h */,
-				014D788D16A1BB9000672323 /* ExposerViewController.m */,
-				0196B8EA16D1031700380E8E /* ContentViewController.h */,
-				0196B8EB16D1031700380E8E /* ContentViewController.m */,
-				0196B8EC16D1031700380E8E /* ContentViewController.xib */,
-				014D787E16A1BB7100672323 /* AppDelegate.h */,
-				014D787F16A1BB7100672323 /* AppDelegate.m */,
+				013D66A716E342C0009F60E3 /* AppDelegate.h */,
+				013D66A816E342C0009F60E3 /* AppDelegate.m */,
+				013D66AC16E342C0009F60E3 /* ExposerViewController.h */,
+				013D66AD16E342C0009F60E3 /* ExposerViewController.m */,
+				013D66A916E342C0009F60E3 /* ContentViewController.h */,
+				013D66AA16E342C0009F60E3 /* ContentViewController.m */,
+				013D66AB16E342C0009F60E3 /* ContentViewController.xib */,
 				014D787616A1BB7100672323 /* Supporting Files */,
 			);
+			name = ExposerApp;
 			path = Exposer;
 			sourceTree = "<group>";
 		};
 		014D787616A1BB7100672323 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				014D787716A1BB7100672323 /* Exposer-Info.plist */,
-				014D787816A1BB7100672323 /* InfoPlist.strings */,
-				014D787B16A1BB7100672323 /* main.m */,
-				014D787D16A1BB7100672323 /* Exposer-Prefix.pch */,
-				014D788116A1BB7100672323 /* Default.png */,
-				014D788316A1BB7100672323 /* Default@2x.png */,
-				014D788516A1BB7100672323 /* Default-568h@2x.png */,
+				013D66B516E342EF009F60E3 /* ExposerApp-Info.plist */,
+				013D66B616E342EF009F60E3 /* ExposerApp-Prefix.pch */,
+				013D66BD16E3432F009F60E3 /* InfoPlist.strings */,
+				013D66B216E342EF009F60E3 /* Default-568h@2x.png */,
+				013D66B316E342EF009F60E3 /* Default.png */,
+				013D66B416E342EF009F60E3 /* Default@2x.png */,
+				013D66B716E342EF009F60E3 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -151,9 +162,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		014D786A16A1BB7100672323 /* Exposer */ = {
+		014D786A16A1BB7100672323 /* ExposerApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 014D788916A1BB7100672323 /* Build configuration list for PBXNativeTarget "Exposer" */;
+			buildConfigurationList = 014D788916A1BB7100672323 /* Build configuration list for PBXNativeTarget "ExposerApp" */;
 			buildPhases = (
 				014D786716A1BB7100672323 /* Sources */,
 				014D786816A1BB7100672323 /* Frameworks */,
@@ -163,9 +174,9 @@
 			);
 			dependencies = (
 			);
-			name = Exposer;
+			name = ExposerApp;
 			productName = Exposer;
-			productReference = 014D786B16A1BB7100672323 /* Exposer.app */;
+			productReference = 014D786B16A1BB7100672323 /* ExposerApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -177,7 +188,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Jesse Armand";
 			};
-			buildConfigurationList = 014D786516A1BB7100672323 /* Build configuration list for PBXProject "Exposer" */;
+			buildConfigurationList = 014D786516A1BB7100672323 /* Build configuration list for PBXProject "ExposerApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -189,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				014D786A16A1BB7100672323 /* Exposer */,
+				014D786A16A1BB7100672323 /* ExposerApp */,
 			);
 		};
 /* End PBXProject section */
@@ -199,11 +210,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				014D787A16A1BB7100672323 /* InfoPlist.strings in Resources */,
-				014D788216A1BB7100672323 /* Default.png in Resources */,
-				014D788416A1BB7100672323 /* Default@2x.png in Resources */,
-				014D788616A1BB7100672323 /* Default-568h@2x.png in Resources */,
-				0196B8EE16D1031700380E8E /* ContentViewController.xib in Resources */,
+				013D66B016E342C0009F60E3 /* ContentViewController.xib in Resources */,
+				013D66B816E342EF009F60E3 /* Default-568h@2x.png in Resources */,
+				013D66B916E342EF009F60E3 /* Default.png in Resources */,
+				013D66BA16E342EF009F60E3 /* Default@2x.png in Resources */,
+				013D66BF16E3432F009F60E3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,24 +225,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				014D787C16A1BB7100672323 /* main.m in Sources */,
-				014D788016A1BB7100672323 /* AppDelegate.m in Sources */,
-				014D788E16A1BB9000672323 /* ExposerViewController.m in Sources */,
 				011D708916A3E5CA004975DC /* JARExposerView.m in Sources */,
 				011D709016A3E9B3004975DC /* JARExposerContentView.m in Sources */,
 				01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */,
 				01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */,
-				0196B8ED16D1031700380E8E /* ContentViewController.m in Sources */,
+				013D66AE16E342C0009F60E3 /* AppDelegate.m in Sources */,
+				013D66AF16E342C0009F60E3 /* ContentViewController.m in Sources */,
+				013D66B116E342C0009F60E3 /* ExposerViewController.m in Sources */,
+				013D66BC16E342EF009F60E3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		014D787816A1BB7100672323 /* InfoPlist.strings */ = {
+		013D66BD16E3432F009F60E3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				014D787916A1BB7100672323 /* en */,
+				013D66BE16E3432F009F60E3 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -295,8 +306,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Exposer/Exposer-Prefix.pch";
-				INFOPLIST_FILE = "Exposer/Exposer-Info.plist";
+				GCC_PREFIX_HEADER = "ExposerApp/ExposerApp-Prefix.pch";
+				INFOPLIST_FILE = "ExposerApp/ExposerApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -306,8 +317,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Exposer/Exposer-Prefix.pch";
-				INFOPLIST_FILE = "Exposer/Exposer-Info.plist";
+				GCC_PREFIX_HEADER = "ExposerApp/ExposerApp-Prefix.pch";
+				INFOPLIST_FILE = "ExposerApp/ExposerApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -316,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		014D786516A1BB7100672323 /* Build configuration list for PBXProject "Exposer" */ = {
+		014D786516A1BB7100672323 /* Build configuration list for PBXProject "ExposerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014D788716A1BB7100672323 /* Debug */,
@@ -325,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		014D788916A1BB7100672323 /* Build configuration list for PBXNativeTarget "Exposer" */ = {
+		014D788916A1BB7100672323 /* Build configuration list for PBXNativeTarget "ExposerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014D788A16A1BB7100672323 /* Debug */,
