@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'ExposerApp' target in the 'ExposerApp' project
+// Prefix header for all source files of the 'Exposer' target in the 'Exposer' project
 //
 
 #import <Availability.h>
@@ -11,5 +11,5 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import <Exposer/Exposer.h>
+    #import <QuartzCore/QuartzCore.h>
 #endif

@@ -9,3 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import <Exposer/JARExposerView.h>
+#import <Exposer/JARExposerContentViewAttributes.h>
+#import <Exposer/JARExposerContentView.h>
+
+#import <Exposer/JARExposerViewDataSource.h>
+#import <Exposer/JARExposerViewDelegate.h>
+#import <Exposer/JARExposerViewController.h>

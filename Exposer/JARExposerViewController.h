@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "JARExposerView.h"
+@class JARExposerView;
 
 @protocol JARViewControllerPresentation 
 
@@ -17,7 +17,7 @@
 
 @end
 
-@interface JARExposerViewController : UIViewController <JARExposerViewDataSource, JARExposerViewDelegate, JARViewControllerPresentation>
+@interface JARExposerViewController : UIViewController <JARViewControllerPresentation>
 
 @property (strong, nonatomic) JARExposerView *exposerView;
 

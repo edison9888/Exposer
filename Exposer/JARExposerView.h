@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "JARExposerViewDelegate.h"
-#import "JARExposerViewDataSource.h"
-#import "JARExposerContentViewAttributes.h"
-#import "JARExposerContentView.h"
+#import <Exposer/JARExposerViewDataSource.h>
+#import <Exposer/JARExposerViewDelegate.h>
 
 @class JARExposerContentView;
 

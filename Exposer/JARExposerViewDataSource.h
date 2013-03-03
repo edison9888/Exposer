@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class JARExposerView;
 @class JARExposerContentView;
 @class JARExposerContentViewAttributes;
 

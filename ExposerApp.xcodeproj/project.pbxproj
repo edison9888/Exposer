@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011D708916A3E5CA004975DC /* JARExposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011D708816A3E5CA004975DC /* JARExposerView.m */; };
-		011D709016A3E9B3004975DC /* JARExposerContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011D708F16A3E9B3004975DC /* JARExposerContentView.m */; };
 		013D66AE16E342C0009F60E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66A816E342C0009F60E3 /* AppDelegate.m */; };
 		013D66AF16E342C0009F60E3 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66AA16E342C0009F60E3 /* ContentViewController.m */; };
 		013D66B016E342C0009F60E3 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013D66AB16E342C0009F60E3 /* ContentViewController.xib */; };
@@ -18,21 +16,46 @@
 		013D66BA16E342EF009F60E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013D66B416E342EF009F60E3 /* Default@2x.png */; };
 		013D66BC16E342EF009F60E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66B716E342EF009F60E3 /* main.m */; };
 		013D66BF16E3432F009F60E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 013D66BD16E3432F009F60E3 /* InfoPlist.strings */; };
+		013D674716E362D5009F60E3 /* libExposer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D673E16E3628D009F60E3 /* libExposer.a */; };
+		013D674C16E3634C009F60E3 /* Exposer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 013D674016E3628D009F60E3 /* Exposer.bundle */; };
 		014D787016A1BB7100672323 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014D786F16A1BB7100672323 /* UIKit.framework */; };
 		014D787216A1BB7100672323 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014D787116A1BB7100672323 /* Foundation.framework */; };
 		014D787416A1BB7100672323 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014D787316A1BB7100672323 /* CoreGraphics.framework */; };
 		017E854616AD3AD7001930E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017E854516AD3AD7001930E2 /* QuartzCore.framework */; };
-		01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */; };
-		01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE6BF216A7E866001C291F /* JARExposerViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		013D673D16E3628D009F60E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013D673716E3628C009F60E3 /* Exposer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 013D66CB16E3488F009F60E3;
+			remoteInfo = Exposer;
+		};
+		013D673F16E3628D009F60E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013D673716E3628C009F60E3 /* Exposer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 013D671C16E3570B009F60E3;
+			remoteInfo = ExposerResources;
+		};
+		013D674216E362A6009F60E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013D673716E3628C009F60E3 /* Exposer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 013D66CA16E3488F009F60E3;
+			remoteInfo = Exposer;
+		};
+		013D674A16E36345009F60E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013D673716E3628C009F60E3 /* Exposer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 013D671B16E3570B009F60E3;
+			remoteInfo = ExposerResources;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		011D708716A3E5CA004975DC /* JARExposerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerView.h; path = JARExposerView/JARExposerView.h; sourceTree = "<group>"; };
-		011D708816A3E5CA004975DC /* JARExposerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerView.m; path = JARExposerView/JARExposerView.m; sourceTree = "<group>"; };
-		011D708E16A3E9B3004975DC /* JARExposerContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerContentView.h; path = JARExposerView/JARExposerContentView.h; sourceTree = "<group>"; };
-		011D708F16A3E9B3004975DC /* JARExposerContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentView.m; path = JARExposerView/JARExposerContentView.m; sourceTree = "<group>"; };
-		011D709A16A41255004975DC /* JARExposerViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JARExposerViewDataSource.h; path = JARExposerView/JARExposerViewDataSource.h; sourceTree = "<group>"; };
-		011D709B16A4126A004975DC /* JARExposerViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JARExposerViewDelegate.h; path = JARExposerView/JARExposerViewDelegate.h; sourceTree = "<group>"; };
 		013D66A716E342C0009F60E3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ExposerApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		013D66A816E342C0009F60E3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ExposerApp/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		013D66A916E342C0009F60E3 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentViewController.h; path = ExposerApp/ContentViewController.h; sourceTree = SOURCE_ROOT; };
@@ -47,16 +70,12 @@
 		013D66B616E342EF009F60E3 /* ExposerApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ExposerApp-Prefix.pch"; path = "ExposerApp/ExposerApp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		013D66B716E342EF009F60E3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExposerApp/main.m; sourceTree = SOURCE_ROOT; };
 		013D66BE16E3432F009F60E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ExposerApp/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		013D66C116E343FA009F60E3 /* Exposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exposer.h; sourceTree = "<group>"; };
+		013D673716E3628C009F60E3 /* Exposer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Exposer.xcodeproj; sourceTree = "<group>"; };
 		014D786B16A1BB7100672323 /* ExposerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		014D786F16A1BB7100672323 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		014D787116A1BB7100672323 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		014D787316A1BB7100672323 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		017E854516AD3AD7001930E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		01CE6BCF16A68509001C291F /* JARExposerContentViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerContentViewAttributes.h; path = JARExposerView/JARExposerContentViewAttributes.h; sourceTree = "<group>"; };
-		01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerContentViewAttributes.m; path = JARExposerView/JARExposerContentViewAttributes.m; sourceTree = "<group>"; };
-		01CE6BF116A7E866001C291F /* JARExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARExposerViewController.h; path = JARExposerView/JARExposerViewController.h; sourceTree = "<group>"; };
-		01CE6BF216A7E866001C291F /* JARExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARExposerViewController.m; path = JARExposerView/JARExposerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013D674716E362D5009F60E3 /* libExposer.a in Frameworks */,
 				017E854616AD3AD7001930E2 /* QuartzCore.framework in Frameworks */,
 				014D787016A1BB7100672323 /* UIKit.framework in Frameworks */,
 				014D787216A1BB7100672323 /* Foundation.framework in Frameworks */,
@@ -74,36 +94,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		011D708516A3E54F004975DC /* JARExposerView */ = {
+		013D673816E3628C009F60E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				011D708716A3E5CA004975DC /* JARExposerView.h */,
-				011D708816A3E5CA004975DC /* JARExposerView.m */,
-				01CE6BCF16A68509001C291F /* JARExposerContentViewAttributes.h */,
-				01CE6BD016A68509001C291F /* JARExposerContentViewAttributes.m */,
-				011D708E16A3E9B3004975DC /* JARExposerContentView.h */,
-				011D708F16A3E9B3004975DC /* JARExposerContentView.m */,
-				011D709A16A41255004975DC /* JARExposerViewDataSource.h */,
-				011D709B16A4126A004975DC /* JARExposerViewDelegate.h */,
-				01CE6BF116A7E866001C291F /* JARExposerViewController.h */,
-				01CE6BF216A7E866001C291F /* JARExposerViewController.m */,
+				013D673E16E3628D009F60E3 /* libExposer.a */,
+				013D674016E3628D009F60E3 /* Exposer.bundle */,
 			);
-			name = JARExposerView;
-			sourceTree = "<group>";
-		};
-		013D66C016E343DE009F60E3 /* Exposer */ = {
-			isa = PBXGroup;
-			children = (
-				013D66C116E343FA009F60E3 /* Exposer.h */,
-			);
-			path = Exposer;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		014D786016A1BB7100672323 = {
 			isa = PBXGroup;
 			children = (
-				013D66C016E343DE009F60E3 /* Exposer */,
-				011D708516A3E54F004975DC /* JARExposerView */,
+				013D673716E3628C009F60E3 /* Exposer.xcodeproj */,
 				014D787516A1BB7100672323 /* ExposerApp */,
 				014D786E16A1BB7100672323 /* Frameworks */,
 				014D786C16A1BB7100672323 /* Products */,
@@ -173,6 +176,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				013D674B16E36345009F60E3 /* PBXTargetDependency */,
+				013D674316E362A6009F60E3 /* PBXTargetDependency */,
 			);
 			name = ExposerApp;
 			productName = Exposer;
@@ -198,6 +203,12 @@
 			mainGroup = 014D786016A1BB7100672323;
 			productRefGroup = 014D786C16A1BB7100672323 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 013D673816E3628C009F60E3 /* Products */;
+					ProjectRef = 013D673716E3628C009F60E3 /* Exposer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				014D786A16A1BB7100672323 /* ExposerApp */,
@@ -205,11 +216,29 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		013D673E16E3628D009F60E3 /* libExposer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libExposer.a;
+			remoteRef = 013D673D16E3628D009F60E3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013D674016E3628D009F60E3 /* Exposer.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Exposer.bundle;
+			remoteRef = 013D673F16E3628D009F60E3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		014D786916A1BB7100672323 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013D674C16E3634C009F60E3 /* Exposer.bundle in Resources */,
 				013D66B016E342C0009F60E3 /* ContentViewController.xib in Resources */,
 				013D66B816E342EF009F60E3 /* Default-568h@2x.png in Resources */,
 				013D66B916E342EF009F60E3 /* Default.png in Resources */,
@@ -225,10 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				011D708916A3E5CA004975DC /* JARExposerView.m in Sources */,
-				011D709016A3E9B3004975DC /* JARExposerContentView.m in Sources */,
-				01CE6BD116A68509001C291F /* JARExposerContentViewAttributes.m in Sources */,
-				01CE6BF316A7E866001C291F /* JARExposerViewController.m in Sources */,
 				013D66AE16E342C0009F60E3 /* AppDelegate.m in Sources */,
 				013D66AF16E342C0009F60E3 /* ContentViewController.m in Sources */,
 				013D66B116E342C0009F60E3 /* ExposerViewController.m in Sources */,
@@ -237,6 +262,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		013D674316E362A6009F60E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Exposer;
+			targetProxy = 013D674216E362A6009F60E3 /* PBXContainerItemProxy */;
+		};
+		013D674B16E36345009F60E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ExposerResources;
+			targetProxy = 013D674A16E36345009F60E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		013D66BD16E3432F009F60E3 /* InfoPlist.strings */ = {
@@ -305,6 +343,10 @@
 		014D788A16A1BB7100672323 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExposerApp/ExposerApp-Prefix.pch";
 				INFOPLIST_FILE = "ExposerApp/ExposerApp-Info.plist";
@@ -316,6 +358,10 @@
 		014D788B16A1BB7100672323 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExposerApp/ExposerApp-Prefix.pch";
 				INFOPLIST_FILE = "ExposerApp/ExposerApp-Info.plist";

@@ -8,6 +8,12 @@
 
 #import "JARExposerView.h"
 
+#import "JARExposerViewDataSource.h"
+#import "JARExposerViewDelegate.h"
+
+#import "JARExposerContentView.h"
+#import "JARExposerContentViewAttributes.h"
+
 @interface JARExposerView ()
 
 @property (strong, nonatomic) NSMutableArray *visibleViews;
@@ -18,6 +24,18 @@
 @end
 
 @implementation JARExposerView
+
+// Load the framework bundle.
++ (NSBundle *)frameworkBundle {
+    static NSBundle* frameworkBundle = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
+        NSString* frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:@"Exposer.bundle"];
+        frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
+    });
+    return frameworkBundle;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -8,9 +8,14 @@
 
 #import "JARExposerViewController.h"
 
+#import "JARExposerViewDataSource.h"
+#import "JARExposerViewDelegate.h"
+
+#import "JARExposerView.h"
+#import "JARExposerContentView.h"
 #import "JARExposerContentViewAttributes.h"
 
-@interface JARExposerViewController () 
+@interface JARExposerViewController () <JARExposerViewDataSource, JARExposerViewDelegate, JARViewControllerPresentation>
 
 @end
 

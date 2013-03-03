@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		013D671116E354EA009F60E3 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 013D671216E354EA009F60E3 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				013D671716E355C3009F60E3 /* Build Framework */,
+			);
+			dependencies = (
+				013D672A16E357B2009F60E3 /* PBXTargetDependency */,
+				013D671616E3550B009F60E3 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		013D66CF16E3488F009F60E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D66CE16E3488F009F60E3 /* Foundation.framework */; };
+		013D66E116E34D40009F60E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D66E016E34D40009F60E3 /* UIKit.framework */; };
+		013D66E316E34D4D009F60E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D66E216E34D4D009F60E3 /* QuartzCore.framework */; };
+		013D66E516E34D7B009F60E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D66E416E34D7B009F60E3 /* CoreGraphics.framework */; };
+		013D66F016E34E1E009F60E3 /* JARExposerContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66E716E34E1E009F60E3 /* JARExposerContentView.m */; };
+		013D66F116E34E1E009F60E3 /* JARExposerContentVIewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66E916E34E1E009F60E3 /* JARExposerContentVIewAttributes.m */; };
+		013D66F216E34E1E009F60E3 /* JARExposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66EB16E34E1E009F60E3 /* JARExposerView.m */; };
+		013D66F316E34E1E009F60E3 /* JARExposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D66ED16E34E1E009F60E3 /* JARExposerViewController.m */; };
+		013D670B16E353C0009F60E3 /* Exposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670316E35310009F60E3 /* Exposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		013D670C16E353C7009F60E3 /* JARExposerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670616E35310009F60E3 /* JARExposerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		013D670D16E353D1009F60E3 /* JARExposerContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670416E35310009F60E3 /* JARExposerContentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		013D670E16E353DE009F60E3 /* JARExposerContentViewAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670516E35310009F60E3 /* JARExposerContentViewAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		013D670F16E353E5009F60E3 /* JARExposerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670716E35310009F60E3 /* JARExposerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		013D671016E353EB009F60E3 /* JARExposerViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670816E35310009F60E3 /* JARExposerViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		013D671E16E3570B009F60E3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D671D16E3570B009F60E3 /* CoreFoundation.framework */; };
+		013D672416E3570B009F60E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 013D672216E3570B009F60E3 /* InfoPlist.strings */; };
+		013D673616E36155009F60E3 /* JARExposerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 013D670916E35310009F60E3 /* JARExposerViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		013D671516E3550B009F60E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013D66C316E3488F009F60E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 013D66CA16E3488F009F60E3;
+			remoteInfo = Exposer;
+		};
+		013D672916E357B2009F60E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013D66C316E3488F009F60E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 013D671B16E3570B009F60E3;
+			remoteInfo = ExposerResources;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		013D672B16E358A9009F60E3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		013D66CB16E3488F009F60E3 /* libExposer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libExposer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		013D66CE16E3488F009F60E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		013D66DF16E349EC009F60E3 /* Exposer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Exposer-Prefix.pch"; sourceTree = "<group>"; };
+		013D66E016E34D40009F60E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		013D66E216E34D4D009F60E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		013D66E416E34D7B009F60E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		013D66E716E34E1E009F60E3 /* JARExposerContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARExposerContentView.m; sourceTree = "<group>"; };
+		013D66E916E34E1E009F60E3 /* JARExposerContentVIewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARExposerContentVIewAttributes.m; sourceTree = "<group>"; };
+		013D66EB16E34E1E009F60E3 /* JARExposerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARExposerView.m; sourceTree = "<group>"; };
+		013D66ED16E34E1E009F60E3 /* JARExposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARExposerViewController.m; sourceTree = "<group>"; };
+		013D670316E35310009F60E3 /* Exposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exposer.h; sourceTree = "<group>"; };
+		013D670416E35310009F60E3 /* JARExposerContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARExposerContentView.h; sourceTree = "<group>"; };
+		013D670516E35310009F60E3 /* JARExposerContentViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARExposerContentViewAttributes.h; sourceTree = "<group>"; };
+		013D670616E35310009F60E3 /* JARExposerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARExposerView.h; sourceTree = "<group>"; };
+		013D670716E35310009F60E3 /* JARExposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARExposerViewController.h; sourceTree = "<group>"; };
+		013D670816E35310009F60E3 /* JARExposerViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARExposerViewDataSource.h; sourceTree = "<group>"; };
+		013D670916E35310009F60E3 /* JARExposerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARExposerViewDelegate.h; sourceTree = "<group>"; };
+		013D671C16E3570B009F60E3 /* Exposer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Exposer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		013D671D16E3570B009F60E3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		013D672116E3570B009F60E3 /* ExposerResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExposerResources-Info.plist"; sourceTree = "<group>"; };
+		013D672316E3570B009F60E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		013D66C816E3488F009F60E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				013D66E516E34D7B009F60E3 /* CoreGraphics.framework in Frameworks */,
+				013D66E316E34D4D009F60E3 /* QuartzCore.framework in Frameworks */,
+				013D66E116E34D40009F60E3 /* UIKit.framework in Frameworks */,
+				013D66CF16E3488F009F60E3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		013D671916E3570B009F60E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				013D671E16E3570B009F60E3 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		013D66C216E3488F009F60E3 = {
+			isa = PBXGroup;
+			children = (
+				013D66D016E3488F009F60E3 /* Exposer */,
+				013D671F16E3570B009F60E3 /* ExposerResources */,
+				013D66CD16E3488F009F60E3 /* Frameworks */,
+				013D66CC16E3488F009F60E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		013D66CC16E3488F009F60E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				013D66CB16E3488F009F60E3 /* libExposer.a */,
+				013D671C16E3570B009F60E3 /* Exposer.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		013D66CD16E3488F009F60E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				013D66E416E34D7B009F60E3 /* CoreGraphics.framework */,
+				013D66E216E34D4D009F60E3 /* QuartzCore.framework */,
+				013D66E016E34D40009F60E3 /* UIKit.framework */,
+				013D66CE16E3488F009F60E3 /* Foundation.framework */,
+				013D671D16E3570B009F60E3 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		013D66D016E3488F009F60E3 /* Exposer */ = {
+			isa = PBXGroup;
+			children = (
+				013D670316E35310009F60E3 /* Exposer.h */,
+				013D670616E35310009F60E3 /* JARExposerView.h */,
+				013D66EB16E34E1E009F60E3 /* JARExposerView.m */,
+				013D670416E35310009F60E3 /* JARExposerContentView.h */,
+				013D66E716E34E1E009F60E3 /* JARExposerContentView.m */,
+				013D670516E35310009F60E3 /* JARExposerContentViewAttributes.h */,
+				013D66E916E34E1E009F60E3 /* JARExposerContentVIewAttributes.m */,
+				013D670716E35310009F60E3 /* JARExposerViewController.h */,
+				013D66ED16E34E1E009F60E3 /* JARExposerViewController.m */,
+				013D670816E35310009F60E3 /* JARExposerViewDataSource.h */,
+				013D670916E35310009F60E3 /* JARExposerViewDelegate.h */,
+				013D66D116E3488F009F60E3 /* Supporting Files */,
+			);
+			path = Exposer;
+			sourceTree = "<group>";
+		};
+		013D66D116E3488F009F60E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				013D66DF16E349EC009F60E3 /* Exposer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		013D671F16E3570B009F60E3 /* ExposerResources */ = {
+			isa = PBXGroup;
+			children = (
+				013D672016E3570B009F60E3 /* Supporting Files */,
+			);
+			path = ExposerResources;
+			sourceTree = "<group>";
+		};
+		013D672016E3570B009F60E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				013D672116E3570B009F60E3 /* ExposerResources-Info.plist */,
+				013D672216E3570B009F60E3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		013D670A16E353A5009F60E3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				013D670B16E353C0009F60E3 /* Exposer.h in Headers */,
+				013D670C16E353C7009F60E3 /* JARExposerView.h in Headers */,
+				013D670D16E353D1009F60E3 /* JARExposerContentView.h in Headers */,
+				013D670E16E353DE009F60E3 /* JARExposerContentViewAttributes.h in Headers */,
+				013D670F16E353E5009F60E3 /* JARExposerViewController.h in Headers */,
+				013D671016E353EB009F60E3 /* JARExposerViewDataSource.h in Headers */,
+				013D673616E36155009F60E3 /* JARExposerViewDelegate.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		013D66CA16E3488F009F60E3 /* Exposer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 013D66D916E3488F009F60E3 /* Build configuration list for PBXNativeTarget "Exposer" */;
+			buildPhases = (
+				013D66C716E3488F009F60E3 /* Sources */,
+				013D66C816E3488F009F60E3 /* Frameworks */,
+				013D670A16E353A5009F60E3 /* Headers */,
+				013D66F416E34F3F009F60E3 /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Exposer;
+			productName = Exposer;
+			productReference = 013D66CB16E3488F009F60E3 /* libExposer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		013D671B16E3570B009F60E3 /* ExposerResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 013D672616E3570B009F60E3 /* Build configuration list for PBXNativeTarget "ExposerResources" */;
+			buildPhases = (
+				013D671916E3570B009F60E3 /* Frameworks */,
+				013D672B16E358A9009F60E3 /* CopyFiles */,
+				013D671A16E3570B009F60E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExposerResources;
+			productName = ExposerResources;
+			productReference = 013D671C16E3570B009F60E3 /* Exposer.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		013D66C316E3488F009F60E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JAR;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Jesse Armand";
+			};
+			buildConfigurationList = 013D66C616E3488F009F60E3 /* Build configuration list for PBXProject "Exposer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 013D66C216E3488F009F60E3;
+			productRefGroup = 013D66CC16E3488F009F60E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				013D66CA16E3488F009F60E3 /* Exposer */,
+				013D671116E354EA009F60E3 /* Framework */,
+				013D671B16E3570B009F60E3 /* ExposerResources */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		013D671A16E3570B009F60E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				013D672416E3570B009F60E3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		013D66F416E34F3F009F60E3 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
+		};
+		013D671716E355C3009F60E3 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		013D66C716E3488F009F60E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				013D66F016E34E1E009F60E3 /* JARExposerContentView.m in Sources */,
+				013D66F116E34E1E009F60E3 /* JARExposerContentVIewAttributes.m in Sources */,
+				013D66F216E34E1E009F60E3 /* JARExposerView.m in Sources */,
+				013D66F316E34E1E009F60E3 /* JARExposerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		013D671616E3550B009F60E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 013D66CA16E3488F009F60E3 /* Exposer */;
+			targetProxy = 013D671516E3550B009F60E3 /* PBXContainerItemProxy */;
+		};
+		013D672A16E357B2009F60E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 013D671B16E3570B009F60E3 /* ExposerResources */;
+			targetProxy = 013D672916E357B2009F60E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		013D672216E3570B009F60E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				013D672316E3570B009F60E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		013D66D716E3488F009F60E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		013D66D816E3488F009F60E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Release;
+		};
+		013D66DA16E3488F009F60E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Exposer.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Exposer/Exposer-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		013D66DB16E3488F009F60E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Exposer.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Exposer/Exposer-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		013D671316E354EA009F60E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		013D671416E354EA009F60E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		013D672716E3570B009F60E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "ExposerResources/ExposerResources-Info.plist";
+				PRODUCT_NAME = Exposer;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		013D672816E3570B009F60E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "ExposerResources/ExposerResources-Info.plist";
+				PRODUCT_NAME = Exposer;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		013D66C616E3488F009F60E3 /* Build configuration list for PBXProject "Exposer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				013D66D716E3488F009F60E3 /* Debug */,
+				013D66D816E3488F009F60E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		013D66D916E3488F009F60E3 /* Build configuration list for PBXNativeTarget "Exposer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				013D66DA16E3488F009F60E3 /* Debug */,
+				013D66DB16E3488F009F60E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		013D671216E354EA009F60E3 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				013D671316E354EA009F60E3 /* Debug */,
+				013D671416E354EA009F60E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		013D672616E3570B009F60E3 /* Build configuration list for PBXNativeTarget "ExposerResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				013D672716E3570B009F60E3 /* Debug */,
+				013D672816E3570B009F60E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 013D66C316E3488F009F60E3 /* Project object */;
+}

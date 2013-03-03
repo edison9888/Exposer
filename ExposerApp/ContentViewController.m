@@ -7,7 +7,6 @@
 //
 
 #import "ContentViewController.h"
-#import "JARExposerViewController.h"
 
 @interface ContentViewController ()
 
