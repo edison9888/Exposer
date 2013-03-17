@@ -36,8 +36,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.exposerView scrollToContentViewAtIndex:[self numberOfContentViews]-1 animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
