@@ -55,10 +55,11 @@
 {
     [super layoutSubviews];
     
-    if (!_presentingContent)
-        [self updateVisibleViews];
-    else
+    if (_presentingContent) {
         [self presentContentViews];
+    } else {
+        [self updateVisibleViews];
+    }    
 }
 
 - (void)didMoveToSuperview
@@ -197,6 +198,8 @@
         
         [contentView.layer addAnimation:groupAnimation forKey:animationKey];
     }
+    
+    [_visibleViews addObject:contentView];
     
     [self addSubview:contentView];
 }
